@@ -1,0 +1,79 @@
+.aside {
+  min-width: 260px;
+  max-width: 340px;
+  width: 100%;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.aboutTitle {
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 1px;
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.aboutTitle::after {
+  content: "";
+  height: 1px;
+  width: 22px;
+  background-color: black;
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.aboutImage {
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+}
+
+.aboutImage > img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.aboutText {
+  font-size: 18px;
+  line-height: 28px;
+  color: gray;
+}
+
+.aboutFullname {
+  font-family: Sacramento;
+  font-size: 38px;
+}
+
+.aboutDetails {
+  border-bottom: 1px dashed lightgray;
+  padding-bottom: 32px;
+  margin-bottom: 48px;
+}
+
+.aboutSocial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.aboutSocial > span {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.aboutSocialItem {
+  cursor: pointer;
+  font-size: 40px;
+}

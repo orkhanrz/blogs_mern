@@ -1,0 +1,48 @@
+.blogsContainer {
+  padding: 0px 30px;
+}
+
+.blogs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.blogs.column .blogItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.blogs.column .blogTitle {
+  font-size: 48px;
+  letter-spacing: 8px;
+}
+
+.blogs.column .blogDescription {
+  line-height: 32px;
+}
+
+.blogs.column .blogImage {
+  max-width: unset;
+}
+
+.blogs.column .blogDetails {
+  padding: 16px 0px;
+}
+
+.blogs.column .blogDetailsMain {
+  margin-bottom: 16px;
+}
+
+.blogs.column .blogItem:first-child {
+  grid-column: 1 / 3;
+  margin-bottom: 32px;
+}
+
+.blogs.column .blogItem:first-child .blogDetailsMain {
+  order: 1;
+}
+
+.blogs.column .blogItem:first-child .blogDetailsExtra {
+  order: 3;
+}

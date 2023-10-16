@@ -1,0 +1,61 @@
+.homeBannerSlider {
+  max-width: 1710px;
+  width: 100%;
+  position: absolute;
+  bottom: -350px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.homeBannerSliderItems {
+  display: grid;
+  gap: 60px;
+  grid-template-columns: repeat(4, auto);
+  overflow-x: auto;
+}
+
+.homeBannerSliderItems::-webkit-scrollbar {
+  display: none;
+}
+
+.homeBannerSliderItem {
+  border: 10px solid white;
+  background: white;
+  cursor: pointer;
+  text-align: center;
+  width: 460px;
+}
+
+.homeBannerSliderItemImage {
+  overflow: hidden;
+}
+
+.homeBannerSliderItemImage:hover > img {
+    scale: 1.1;
+}
+
+.homeBannerSliderItemImage > img {
+  width: 100%;
+  height: auto;
+  transition: scale .5s ease;
+}
+
+.homeBannerSliderButton {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.homeBannerSliderItemInfo .title {
+  font-weight: 400;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.homeBannerSliderItemInfo .date {
+  text-transform: uppercase;
+  color: gray;
+}

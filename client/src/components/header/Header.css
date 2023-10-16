@@ -1,0 +1,68 @@
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+
+.headerContainer {
+  padding: 10px 30px;
+}
+
+.headerLogo {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerList {
+  display: flex;
+  gap: 48px;
+}
+
+.headerLink {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.headerLink.active {
+  color: #d87b4d;
+}
+
+.headerIcons {
+  display: flex;
+  gap: 64px;
+}
+
+.headerSocial {
+  display: flex;
+  gap: 32px;
+  position: relative;
+}
+
+.headerSocial::after {
+  position: absolute;
+  right: -32px;
+  content: "";
+  height: 100%;
+  width: 1px;
+  background-color: lightgray;
+}
+
+.headerSocialItem {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.headerSocialItem:hover,
+.headerSocialItem:focus {
+  color: #d87b4d;
+}

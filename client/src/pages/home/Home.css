@@ -1,0 +1,11 @@
+.homeContainer {
+  padding: 0px 30px;
+}
+
+main {
+  display: flex;
+  max-width: 1500px;
+  width: 100%;
+  margin: 80px auto;
+  gap: 40px;
+}
