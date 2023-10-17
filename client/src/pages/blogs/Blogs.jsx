@@ -138,7 +138,7 @@ function Blogs() {
   return (
     <>
       <Header />
-      <main>
+      <div className="blogsPage">
         <div className="blogsContainer">
           <div className="blogs column">
             {blogs.length &&
@@ -149,7 +149,7 @@ function Blogs() {
           {pages && <Pagination />}
         </div>
         <Aside />
-      </main>
+      </div>
       <Footer />
     </>
   );

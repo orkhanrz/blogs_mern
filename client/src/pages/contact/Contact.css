@@ -1,0 +1,151 @@
+.contactPage {
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.contactPageImage {
+  width: 100%;
+  height: 512px;
+  margin-bottom: 50px;
+}
+
+.contactPageImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contactPageMain {
+  padding: 0 16px;
+  display: flex;
+  gap: 64px;
+}
+
+.contactPageMainInfoTitle {
+  margin-bottom: 34px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.contactPageMainInfoText {
+  font-size: 22px;
+  line-height: 40px;
+}
+
+.contactPageAside {
+  min-width: 380px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.contactPageAsideLocation {
+  text-align: center;
+  padding: 40px 0;
+  margin-bottom: 64px;
+  border-bottom: 1px dashed lightgray;
+}
+
+.contactPageAsideLocationTitle {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.contactPageAsideLocationTitle:after {
+    content: '';
+    position: absolute;
+    bottom: -75%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    width: 16px;
+    background-color: black;
+}
+
+.contactPageAsideLocationText {
+    color: gray;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.contactPageAsideLocationText > span {
+    color: black;
+}
+
+.contactPageAsideLocationImage {
+    width: 100%;
+}
+
+.contactPageAsideLocationImage > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contactPageAsideLocationTitle {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.contactPageAsideBanner {
+  width: 100%;
+}
+
+.contactPageAsideBanner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contactPageFormWrapper {
+    width: 100%;
+    margin-bottom: 48px;
+}
+
+.contactPageForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactPageForm input, .contactPageForm textarea {
+    padding: 16px 32px;
+    border: 1px solid #c8c8c8;
+    font-family: inherit;
+    font-size: 16px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    color: #c8c8c8;
+}
+
+.contactPageForm input::placeholder, .contactPageForm textarea::placeholder {
+    color: #c8c8c8;
+}
+
+.contactPageForm input:focus, .contactPageForm textarea:focus {
+    border: 1px solid #d87b4d;
+    outline: none;
+}
+
+.contactPageForm input {
+    width: 60%;
+}
+
+.contactPageForm textarea {
+    resize: vertical;
+    height: 160px;
+    line-height: 32px;
+}
+
+.contactPageForm button {
+    padding: 16px 48px;
+    background-color: #1d1f20;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: inherit;
+    font-size: 14px;
+    align-self: flex-start;
+    cursor: pointer;
+}

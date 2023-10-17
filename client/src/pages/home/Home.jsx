@@ -111,7 +111,7 @@ function Home() {
       <div className="homeContainer">
         <div className="homeContent">
           <Banner featured={featured} />
-          <main>
+          <div className="homePage">
             <div className="blogsContainer">
               {blogs.length && (
                 <div className="homeBlogs">
@@ -123,7 +123,7 @@ function Home() {
               <Pagination />
             </div>
             <Aside />
-          </main>
+          </div>
         </div>
       </div>
       <Footer />

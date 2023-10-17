@@ -8,3 +8,32 @@
   height: 100vh;
   object-fit: cover;
 }
+
+.bannerText {
+  font-family: Sacramento;
+  font-size: 192px;
+  rotate: -15deg;
+  margin: 0;
+  color: white;
+  width: min-content;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  opacity: 0%;
+}
+
+.animate {
+  opacity: 100%;
+  animation: animateText 1s ease;
+}
+
+@keyframes animateText {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 15%;
+  }
+}
