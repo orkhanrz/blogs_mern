@@ -1,0 +1,52 @@
+.signMeUp {
+    width: 100%;
+    text-align: center;
+    padding: 32px 0;
+}
+
+.signMeUpTitle {
+    font-family: Sacramento;
+    font-size: 64px;
+    margin: 16px 0;
+}
+.signMeUpText {
+    color: var(--main-clr);
+    margin-bottom: 32px;
+}
+
+.signMeUpInputWrapper {
+    width: 100%;
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.signMeUpInputWrapper > input {
+    padding: 32px;
+    font-family: inherit;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+    border: 1px solid var(--light-gray-clr);
+    color: var(--light-gray-clr);
+}
+
+.signMeUpInputWrapper > input::placeholder {
+    color: var(--light-gray-clr);
+}
+
+.signMeUpInputWrapper > input:focus {
+    border: 1px solid var(--main-clr);
+    color: var(--gray-color);
+}
+
+.signMeUpInputWrapper > button {
+    padding: 32px 64px;
+    font-family: inherit;
+    background-color: var(--black-clr);
+    color: var(--white-clr);
+    border: 1px solid var(--black-clr);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    cursor: pointer;
+}

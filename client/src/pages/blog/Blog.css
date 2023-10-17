@@ -1,0 +1,143 @@
+.singleBlogPage {
+  display: flex;
+  max-width: 1400px;
+  width: 100%;
+  margin: 80px auto;
+  gap: 80px;
+}
+
+.singleBlogPostHeader {
+  text-align: center;
+}
+
+.singleBlogPostCategory {
+  font-family: Sacramento;
+  color: var(--category-clr);
+  font-size: 28px;
+  margin: 0;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+.singleBlogPostTitle {
+  font-size: 64px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 16px 0;
+}
+
+.singleBlogPostDate {
+  font-size: 14px;
+  color: var(--gray-clr);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.singleBlogPostImage {
+  width: 100%;
+  height: 700px;
+  margin: 32px 0 48px 0;
+}
+
+.singleBlogPostImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.singleBlogPostMain {
+  padding: 0px 48px;
+}
+
+.singleBlogPostSubtitle {
+  margin-bottom: 48px;
+}
+.singleBlogPostText {
+  font-size: 22px;
+  line-height: 32px;
+}
+.singleBlogPostKeywords {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  margin: 48px 0 0 0;
+}
+.singleBlogPostKeywords > span {
+  font-size: 16px;
+  padding: 10px 22px;
+  background-color: var(--light-gray-clr);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.singleBlogPostKeywords > span:hover {
+  background-color: var(--black-clr);
+  color: var(--white-clr);
+}
+
+.singleBlogPostDetails {
+  padding: 32px 0 48px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--light-gray-clr);
+}
+
+.singleBlogPostDetailsMain {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  color: var(--light-gray-clr);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.singleBlogPostDetailsSocial {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.singleBlogPostDetailsSocial > span {
+  font-size: 32px;
+  color: var(--main-clr);
+  cursor: pointer;
+}
+
+.facebookIcon:hover {
+  color: #3b5998;
+}
+
+.twitterIcon:hover {
+  color: #00acee;
+}
+
+.pinterestIcon:hover {
+  color: #e60023;
+}
+
+.heartIcon {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.commentsTitle {
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  margin: 64px 0;
+}
+
+/* .commentsTitle::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  height: 2px;
+  width: 16px;
+  background-color: var(--black-clr);
+} */

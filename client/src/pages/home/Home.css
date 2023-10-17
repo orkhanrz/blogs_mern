@@ -4,8 +4,14 @@
 
 .homePage {
   display: flex;
-  max-width: 1500px;
+  max-width: 1400px;
   width: 100%;
   margin: 80px auto;
   gap: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .homePage {
+    flex-direction: column;
+  }
 }

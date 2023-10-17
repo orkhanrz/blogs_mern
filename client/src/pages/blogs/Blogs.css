@@ -1,5 +1,6 @@
 .blogsPage {
   display: flex;
+  flex-direction: row;
   max-width: 1400px;
   width: 100%;
   margin: 80px auto;
@@ -47,10 +48,20 @@
   margin-bottom: 32px;
 }
 
+.blogs.column .blogItem:first-child .blogImage {
+  max-height: unset;
+}
+
 .blogs.column .blogItem:first-child .blogDetailsMain {
   order: 1;
 }
 
 .blogs.column .blogItem:first-child .blogDetailsExtra {
   order: 3;
+}
+
+@media screen and (max-width: 1024px) {
+  .blogsPage {
+    flex-direction: column;
+  }
 }

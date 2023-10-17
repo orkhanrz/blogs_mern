@@ -1,5 +1,7 @@
 import React from "react";
 import "./Slider.css";
+
+import dayjs from 'dayjs';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -25,11 +27,11 @@ function Slider({ featured }) {
           return (
             <div className="homeBannerSliderItem" key={item._id}>
               <div className="homeBannerSliderItemImage">
-                <img src={item.img} alt="banner item" />
+                <img src={item.image} alt="banner item" />
               </div>
               <div className="homeBannerSliderItemInfo">
                 <h1 className="title">{item.title}</h1>
-                <span className="date">{item.date}</span>
+                <span className="date">{dayjs(item.date).format('MMM DD, YYYY')}</span>
               </div>
             </div>
           );

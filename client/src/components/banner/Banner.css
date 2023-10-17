@@ -1,5 +1,8 @@
 .homeBanner {
   position: relative;
+}
+
+.homeBanner.loaded {
   margin-bottom: 482px;
 }
 

@@ -26,13 +26,14 @@
 .blogDetailsDate > span {
   font-size: 14px;
   font-weight: 400;
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .blogImage {
   max-width: 400px;
+  max-height: 300px;
   width: 100%;
-  height: 100%;
   cursor: pointer;
   overflow: hidden;
 }
@@ -64,6 +65,7 @@
   font-size: 26px;
   letter-spacing: 1px;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 .blogCategory:hover,
@@ -116,6 +118,7 @@
 
 .homeBlogs .blogItem:nth-child(4n) .blogImage {
   height: 550px;
+  max-height: unset;
 }
 
 .homeBlogs .blogItem:nth-child(4n) .blogDetailsExtra {

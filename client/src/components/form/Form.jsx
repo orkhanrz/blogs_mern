@@ -1,14 +1,15 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
+import "./Form.css";
 
-function Form() {
-  const [contactDetails, setContactDetails] = useState({
+function Form({ type, url }) {
+  const [details, setDetails] = useState({
     name: "",
     email: "",
     message: "",
   });
 
   const changeHandler = (e) => {
-    setContactDetails((prevState) => {
+    setDetails((prevState) => {
       return {
         ...prevState,
         [e.target.name]: e.target.value,
@@ -19,7 +20,7 @@ function Form() {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log(contactDetails);
+    console.log(details);
   };
 
   return (
@@ -29,23 +30,25 @@ function Form() {
           type="text"
           name="name"
           placeholder="Name"
-          value={contactDetails.name}
+          value={details.name}
           onChange={changeHandler}
         />
         <input
           type="text"
           name="email"
           placeholder="Email"
-          value={contactDetails.email}
+          value={details.email}
           onChange={changeHandler}
         />
         <textarea
           name="message"
-          placeholder="Add message"
-          value={contactDetails.message}
+          placeholder={`Add ${type}`}
+          value={details.message}
           onChange={changeHandler}
         ></textarea>
-        <button onClick={submitHandler}>Send message</button>
+        <button onClick={submitHandler}>
+          {type === "message" ? "Send message" : "Post comment"}
+        </button>
       </form>
     </div>
   );

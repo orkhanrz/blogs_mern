@@ -55,7 +55,7 @@ function Contact() {
                 orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
-            <Form />
+            <Form type='message'/>
           </div>
           <div className="contactPageAside">
             <div className="contactPageAsideLocation">

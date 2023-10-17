@@ -13,13 +13,13 @@ function Banner({featured}) {
   }, []);
 
   return (
-    <div className='homeBanner'>
+    <div className={`homeBanner ${featured.length && 'loaded'}`}>
     <img
       src="https://malina.artstudioworks.net/wp-content/uploads/2018/12/For_home_4.jpg"
       alt="banner"
     />
     <p className={`bannerText ${animate}`}>hello...</p>
-    {featured.length && <Slider featured={featured} />}
+    {featured.length ? <Slider featured={featured}/> : null}
   </div>
   )
 }

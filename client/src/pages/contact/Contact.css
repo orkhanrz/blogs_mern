@@ -1,5 +1,5 @@
 .contactPage {
-  max-width: 1500px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
 }
@@ -39,6 +39,7 @@
   min-width: 380px;
   max-width: 420px;
   width: 100%;
+  margin: 0 0 0 32px auto;
 }
 
 .contactPageAsideLocation {
@@ -99,53 +100,8 @@
   object-fit: cover;
 }
 
-.contactPageFormWrapper {
-    width: 100%;
-    margin-bottom: 48px;
-}
-
-.contactPageForm {
-    display: flex;
+@media screen and (max-width: 1024px) {
+  .contactPageMain {
     flex-direction: column;
-}
-
-.contactPageForm input, .contactPageForm textarea {
-    padding: 16px 32px;
-    border: 1px solid #c8c8c8;
-    font-family: inherit;
-    font-size: 16px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    color: #c8c8c8;
-}
-
-.contactPageForm input::placeholder, .contactPageForm textarea::placeholder {
-    color: #c8c8c8;
-}
-
-.contactPageForm input:focus, .contactPageForm textarea:focus {
-    border: 1px solid #d87b4d;
-    outline: none;
-}
-
-.contactPageForm input {
-    width: 60%;
-}
-
-.contactPageForm textarea {
-    resize: vertical;
-    height: 160px;
-    line-height: 32px;
-}
-
-.contactPageForm button {
-    padding: 16px 48px;
-    background-color: #1d1f20;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: inherit;
-    font-size: 14px;
-    align-self: flex-start;
-    cursor: pointer;
+  }
 }
