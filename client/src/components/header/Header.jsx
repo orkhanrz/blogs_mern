@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../header/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,36 +8,54 @@ import {
   faPinterest,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
+  const [userControls, setUserControls] = useState(false);
+
+  const openUserControls = () => {
+    console.log(userControls);
+    setUserControls((prevState) => !prevState);
+  };
 
   return (
     <header>
       <div className="headerContainer">
         <div className="headerContent">
           <h1 className="headerLogo">
-            <Link to='/'>Blogs</Link>
+            <Link to="/">Blogs</Link>
           </h1>
           <ul className="headerList">
             <li>
-              <Link to="/" className={`headerLink ${pathname === '/' && 'active'}`}>
+              <Link
+                to="/"
+                className={`headerLink ${pathname === "/" && "active"}`}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/blogs" className={`headerLink ${pathname === '/blogs' && 'active'}`}>
+              <Link
+                to="/blogs"
+                className={`headerLink ${pathname === "/blogs" && "active"}`}
+              >
                 Blogs
               </Link>
             </li>
             <li>
-              <Link to="/about" className={`headerLink ${pathname === '/about' && 'active'}`}>
+              <Link
+                to="/about"
+                className={`headerLink ${pathname === "/about" && "active"}`}
+              >
                 About Us
               </Link>
             </li>
             <li>
-              <Link to="/contact" className={`headerLink ${pathname === '/contact' && 'active'}`}>
+              <Link
+                to="/contact"
+                className={`headerLink ${pathname === "/contact" && "active"}`}
+              >
                 Contact
               </Link>
             </li>
@@ -69,12 +87,24 @@ function Header() {
                 />
               </span>
             </div>
-            <span>
+            <div className="headerUser">
               <FontAwesomeIcon
-                icon={faCartShopping}
+                icon={faUser}
                 className="headerSocialItem"
+                onClick={openUserControls}
               />
-            </span>
+              <div className={`userControls ${userControls ? "active" : ""}`}>
+                <div className="userControlsOptions">
+                  <Link to='/signin' className="userControlsBtn">Sign in</Link>
+                  <Link to='/signup' className="userControlsBtn">Sign up</Link>
+                </div>
+                {/* <div className="userControlsOptions">
+                  <button className="userControlsBtn">Edit Profile</button>
+                  <button className="userControlsBtn">Add blog</button>
+                  <button className="userControlsBtn">Sign out</button>
+                </div> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>

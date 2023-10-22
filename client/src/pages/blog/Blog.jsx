@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./Blog.css";
 import dayjs from "dayjs";
@@ -21,6 +21,10 @@ import Form from "../../components/form/Form";
 
 function Blog() {
   const { state } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
