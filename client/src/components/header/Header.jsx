@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../header/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,16 +8,29 @@ import {
   faPinterest,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { userContext } from "../../context/UserContext";
 
 function Header() {
   const { pathname } = useLocation();
   const [userControls, setUserControls] = useState(false);
+  const { user, logout } = useContext(userContext);
 
   const openUserControls = () => {
-    console.log(userControls);
     setUserControls((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (user) {
+      fetch("/users/token", { method: "POST" })
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.success) {
+            logout();
+          }
+        });
+    }
+  }, []);
 
   return (
     <header>
@@ -94,15 +107,30 @@ function Header() {
                 onClick={openUserControls}
               />
               <div className={`userControls ${userControls ? "active" : ""}`}>
-                <div className="userControlsOptions">
-                  <Link to='/signin' className="userControlsBtn">Sign in</Link>
-                  <Link to='/signup' className="userControlsBtn">Sign up</Link>
-                </div>
-                {/* <div className="userControlsOptions">
-                  <button className="userControlsBtn">Edit Profile</button>
-                  <button className="userControlsBtn">Add blog</button>
-                  <button className="userControlsBtn">Sign out</button>
-                </div> */}
+                {user ? (
+                  <div className="userControlsOptions">
+                    <button className="userControlsBtn">Edit Profile</button>
+                    <button className="userControlsBtn">Add blog</button>
+                    <button className="userControlsBtn" onClick={logout}>Sign out</button>
+                  </div>
+                ) : (
+                  <div className="userControlsOptions">
+                    <Link
+                      to="/signin"
+                      className="userControlsBtn"
+                      onClick={() => setUserControls(false)}
+                    >
+                      Sign in
+                    </Link>
+                    <Link
+                      to="/signup"
+                      className="userControlsBtn"
+                      onClick={() => setUserControls(false)}
+                    >
+                      Sign up
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>

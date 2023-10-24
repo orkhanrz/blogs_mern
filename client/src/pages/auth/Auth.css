@@ -1,0 +1,128 @@
+.authPageBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/public/images/form-bird.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: var(--light-gray-clr);
+  background-blend-mode: multiply;
+  filter: blur(32px);
+  -webkit-filter: blur(32px);
+  z-index: -1;
+}
+
+.authPageContainer {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 64px 0;
+  display: flex;
+}
+
+.authImage {
+  width: 55%;
+  position: relative;
+}
+
+.authImage > img {
+  width: 100%;
+  height: 100%;
+}
+
+.authImageTextWrapper {
+  position: absolute;
+  bottom: 32px;
+  color: var(--white-clr);
+  text-align: center;
+  padding: 0 32px;
+}
+
+.authImageTitle {
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.authImageText {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.authForm {
+  box-sizing: border-box;
+  width: 45%;
+  text-align: center;
+  padding: 32px 64px;
+  background-color: var(--white-clr);
+}
+
+.authFormTitle {
+  font-family: Sacramento;
+  font-size: 48px;
+  margin-bottom: 48px;
+}
+
+.authFormSubtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--gray-clr);
+  margin-bottom: 32px;
+}
+
+/* .authForm form {
+    margin-top: 32px;
+} */
+
+.authForm input {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid var(--light-gray-clr);
+  margin-bottom: 16px;
+  font-family: inherit;
+  outline: none;
+  padding: 4px 0px;
+}
+
+.authForm button {
+  padding: 8px 32px;
+  border-radius: 16px;
+  background-color: var(--black-clr);
+  border: 1px solid var(--black-clr);
+  color: var(--white-clr);
+  text-transform: uppercase;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.authForm button:focus,
+.authForm button:hover {
+  background-color: var(--main-clr);
+  border: 1px solid var(--main-clr);
+}
+
+.authForm .formError {
+    color: red;
+    text-align: left;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 1024px) {
+    .authImage {
+      display: none;
+    }
+
+    .authForm {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .authFormTitle {
+        margin: 0;
+    }
+  }
