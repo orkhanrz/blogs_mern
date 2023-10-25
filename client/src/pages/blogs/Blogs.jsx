@@ -28,10 +28,10 @@ function Blogs() {
       <div className="blogsPage">
         <div className="blogsContainer">
           <div className="blogs column">
-            {blogs.length &&
+            {blogs.length ?
               blogs.map((item) => {
                 return <Blog item={item} key={item._id} />;
-              })}
+              }) : null}
           </div>
           {pages > 1 ? <Pagination pages={pages} /> : null}
         </div>

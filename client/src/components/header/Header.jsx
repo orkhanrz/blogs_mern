@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../header/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +12,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { userContext } from "../../context/UserContext";
 
 function Header() {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const [userControls, setUserControls] = useState(false);
   const { user, logout } = useContext(userContext);
@@ -27,6 +28,7 @@ function Header() {
         .then((data) => {
           if (!data.success) {
             logout();
+            navigate('/signin');
           }
         });
     }
@@ -109,9 +111,13 @@ function Header() {
               <div className={`userControls ${userControls ? "active" : ""}`}>
                 {user ? (
                   <div className="userControlsOptions">
-                    <button className="userControlsBtn">Edit Profile</button>
+                    <Link to="/profile" className="userControlsBtn">
+                      Edit Profile
+                    </Link>
                     <button className="userControlsBtn">Add blog</button>
-                    <button className="userControlsBtn" onClick={logout}>Sign out</button>
+                    <button className="userControlsBtn" onClick={logout}>
+                      Sign out
+                    </button>
                   </div>
                 ) : (
                   <div className="userControlsOptions">

@@ -19,8 +19,17 @@ function UserContextProvider({ children }) {
       });
   };
 
+  const edit = (user) => {
+    setUser((prevState) => {
+      return {
+        ...prevState,
+        ...user,
+      };
+    });
+  };
+
   return (
-    <userContext.Provider value={{ user, login, logout }}>
+    <userContext.Provider value={{ user, login, logout, edit }}>
       {children}
     </userContext.Provider>
   );

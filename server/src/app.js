@@ -10,10 +10,13 @@ const store = new MongoDBStore(
   {
     uri: process.env.MONGODB_URI,
     databaseName: "blogs",
-    collection: "mySessions",
+    collection: "userSessions",
   },
   function (error) {
-    console.log(error);
+    if (error){
+      console.log(error);
+      return next(error);
+    }
   }
 );
 
@@ -22,16 +25,23 @@ const userRoutes = require("./routes/user");
 
 //Middleware
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "..", "..", "client", "build")));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
 app.use(
   session({
     secret: process.env.MONGODB_SESSION_SECRET,
-    cookie: { maxAge: 60 * 1000 },
+    cookie: { maxAge: 5 * 60 * 1000 },
     store: store,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 

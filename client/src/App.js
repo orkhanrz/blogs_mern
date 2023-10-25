@@ -9,6 +9,7 @@ import Contact from "./pages/contact/Contact";
 import Blog from "./pages/blog/Blog";
 import Signin from "./pages/signin/Signin";
 import Signup from "./pages/signup/Signup";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </UserContextProvider>

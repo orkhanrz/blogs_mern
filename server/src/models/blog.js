@@ -50,7 +50,8 @@ const BlogSchema = new Schema({
         required: true,
       },
       authorId: {
-        type: String,
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
       },
       date: {
         type: Date,

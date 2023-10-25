@@ -1,24 +1,21 @@
 module.exports = {
-  validate: (req, res, next) => {    
-    if (req.body.fullname && req.body.fullname.length < 1) {
-      return res
-        .status(400)
-        .json({ message: "Fullname cannot be empty.", success: false });
+  validate: (req, res, next) => {
+    const errors = {};
+
+    if (req.body.fullname?.length < 1) {
+      errors.fullname = "Fullname cannot be empty";
     }
 
     if (!req.body.email || !req.body.email.includes("@")) {
-      return res
-        .status(400)
-        .json({ message: "Email is not valid!", success: false });
+      errors.email = "Email is not valid!";
     }
 
     if (!req.body.password || req.body.password.length < 8) {
-      return res.status(400).json({
-        message: "Password length has to be more than 7 characters!",
-        success: false,
-      });
+      errors.password = "Password length has to be more than 7 characters!";
     }
 
-    next();
+    return Object.keys(errors).length
+      ? res.status(400).json({ errors, success: false })
+      : next();
   },
 };

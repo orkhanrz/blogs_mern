@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Signin.css";
 
 import Header from "../../components/header/Header";
@@ -7,8 +8,9 @@ import { userContext } from "../../context/UserContext";
 
 function Auth() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState({ email: null, password: null });
   const { login } = useContext(userContext);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,8 +24,9 @@ function Auth() {
       .then((data) => {
         if (data.success) {
           login(data.user);
+          navigate('/');
         } else {
-          setError(data.message);
+          setErrors(data.errors);
         }
       })
       .catch((err) => console.log(err));
@@ -61,6 +64,9 @@ function Auth() {
                   }))
                 }
               />
+              {errors.email ? (
+                <p className="formError">{errors.email}</p>
+              ) : null}
               <input
                 type="password"
                 name="password"
@@ -72,7 +78,9 @@ function Auth() {
                   }))
                 }
               />
-              {error ? <p className="formError">{error}</p> : null}
+              {errors.password ? (
+                <p className="formError">{errors.password}</p>
+              ) : null}
               <button>Sign in</button>
             </form>
           </div>

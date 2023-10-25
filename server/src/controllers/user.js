@@ -21,16 +21,16 @@ module.exports = {
       if (existingUser) {
         return res
           .status(409)
-          .json({ success: false, message: "User already exists!" });
+          .json({ success: false, errors: { email: "User already exists!" } });
       }
 
       const hashPassword = bcrypt.hashSync(password, 10);
       const newUser = new User({ fullname, email, password: hashPassword });
-      const token = jwt.sign(
-        { _id: newUser._id, email: newUser.email },
-        process.env.JWT_SECRET,
-        { expiresIn: process.env.JWT_EXPIRY }
-      );
+      // const token = jwt.sign(
+      //   { _id: newUser._id, email: newUser.email },
+      //   process.env.JWT_SECRET,
+      //   { expiresIn: process.env.JWT_EXPIRY }
+      // );
 
       await newUser.save();
 
@@ -41,6 +41,7 @@ module.exports = {
           email: newUser.email,
           fullname: newUser.fullname,
           image: newUser.image,
+          quote: newUser.quote,
         },
       });
     } catch (err) {
@@ -56,7 +57,7 @@ module.exports = {
       if (!user) {
         return res
           .status(404)
-          .json({ success: false, message: "User not found!" });
+          .json({ success: false, errors: { email: "User not found!" } });
       }
 
       const validPassword = await bcrypt.compare(password, user.password);
@@ -64,7 +65,7 @@ module.exports = {
       if (!validPassword) {
         return res
           .status(401)
-          .json({ success: false, message: "Password is wrong!" });
+          .json({ success: false, errors: { password: "Password is wrong!" } });
       }
 
       const token = jwt.sign(
@@ -83,10 +84,43 @@ module.exports = {
           email: user.email,
           fullname: user.fullname,
           image: user.image,
+          quote: user.quote,
         },
       });
     } catch (err) {
       next(err);
+    }
+  },
+  signout: (req, res, next) => {
+    req.session.destroy(function (err) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ success: false, message: err.message });
+      }
+
+      res.status(200).json({ success: true, message: "Logged out!" });
+    });
+  },
+  editUser: async (req, res, next) => {
+    const userId = req.params.userId;
+    const { fullname, quote } = req.body;
+
+    try {
+      const user = await User.findById(userId);
+      const image = req.file ? "/uploads/" + req.file.filename : user.image;
+
+      user.fullname = fullname;
+      user.quote = quote;
+      user.image = image;
+
+      await user.save();
+
+      res.status(200).json({
+        success: true,
+        user: { fullname: user.fullname, quote: user.quote, image: user.image },
+      });
+    } catch (error) {
+      next(error);
     }
   },
   verifyToken: (req, res, next) => {
@@ -101,24 +135,12 @@ module.exports = {
     const verification = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!verification) {
-      return res
-        .status(401)
-        .json({
-          message: "Token is not valid. You are being redirected!",
-          success: false,
-        });
+      return res.status(401).json({
+        message: "Token is not valid. You are being redirected!",
+        success: false,
+      });
     }
 
     res.status(200).json({ success: true, message: "Token is valid!" });
   },
-  signout: (req, res, next) => {
-    req.session.destroy(function(err){
-      if (err){
-        console.log(err);
-        return res.status(500).json({success: false, message: err.message})
-      };
-
-      res.status(200).json({success: true, message: 'Logged out!'});
-    });
-  }
 };

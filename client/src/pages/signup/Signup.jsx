@@ -8,8 +8,12 @@ import { userContext } from "../../context/UserContext";
 
 function Auth() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "", fullname: "" });
-  const [error, setError] = useState(null);
+  const [form, setForm] = useState({ email: "", password: "", fullname: ""});
+  const [errors, setErrors] = useState({
+    email: null,
+    password: null,
+    fullname: null,
+  });
   const { login } = useContext(userContext);
 
   function handleSubmit(e) {
@@ -22,11 +26,12 @@ function Auth() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (!data.success) {
-          return setError(data.message);
+          return setErrors(data.errors);
         } else {
-          setError(null);
-          login(data.user, data.token);
+          setErrors({ email: null, password: null, fullname: null });
+          login(data.user);
           navigate("/signin");
         }
       })
@@ -65,7 +70,9 @@ function Auth() {
                   }))
                 }
               />
-
+              {errors.fullname ? (
+                <p className="formError">{errors.fullname}</p>
+              ) : null}
               <input
                 type="email"
                 name="email"
@@ -77,6 +84,9 @@ function Auth() {
                   }))
                 }
               />
+              {errors.email ? (
+                <p className="formError">{errors.email}</p>
+              ) : null}
               <input
                 type="password"
                 name="password"
@@ -88,7 +98,9 @@ function Auth() {
                   }))
                 }
               />
-              {error ? <p className="formError">{error}</p> : null}
+              {errors.password ? (
+                <p className="formError">{errors.password}</p>
+              ) : null}
               <button>Sign up</button>
             </form>
           </div>

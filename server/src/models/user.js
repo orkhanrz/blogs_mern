@@ -19,6 +19,7 @@ const UserSchema = new Schema({
   },
   image: {
     type: String,
+    default: '/public/images/default_user.avif'
   },
   blogs: [
     {

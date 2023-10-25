@@ -1,0 +1,54 @@
+.profilePage {
+    max-width: 1400px;
+    width: 100%;
+    margin: 16px auto;
+}
+
+.profileContainer {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 0;
+}
+
+.profilePage form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profilePage input {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid var(--light-gray-clr);
+    margin-bottom: 16px;
+    font-family: inherit;
+    outline: none;
+    padding: 4px 0px;
+  }
+  
+  .profilePage button {
+    padding: 8px 32px;
+    border-radius: 16px;
+    background-color: var(--black-clr);
+    border: 1px solid var(--black-clr);
+    color: var(--white-clr);
+    text-transform: uppercase;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  
+  .profilePage button:focus,
+  .profilePage button:hover {
+    background-color: var(--main-clr);
+    border: 1px solid var(--main-clr);
+  }
+  
+  .profilePage .formError {
+      color: red;
+      text-align: left;
+      font-size: 12px;
+  }
