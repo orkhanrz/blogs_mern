@@ -18,9 +18,14 @@ import SignMeUp from "../../components/signMeUp/SignMeUp";
 import Author from "../../components/author/Author";
 import Comment from "../../components/comment/Comment";
 import Form from "../../components/form/Form";
+import Error from "../error/Error";
+import useFetch from "../../hooks/useFetch";
 
 function Blog() {
   const { state } = useLocation();
+  const { data, isLoading, error } = useFetch(`/blogs/${state._id}`);
+
+  console.log(data);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,62 +34,80 @@ function Blog() {
   return (
     <>
       <Header />
-      <div className="singleBlogPage">
-        <div className="singleBlogMain">
-          <div className="singleBlogPost">
-            <div className="singleBlogPostHeader">
-              <p className="singleBlogPostCategory">{state.category}</p>
-              <h1 className="singleBlogPostTitle">{state.title}</h1>
-              <span className="singleBlogPostDate">
-                {dayjs(state.date).format("MMM DD, YYYY")}
-              </span>
+      {!error ? (
+        !isLoading ? (
+          <div className="singleBlogPage">
+            <div className="singleBlogMain">
+              <div className="singleBlogPost">
+                <div className="singleBlogPostHeader">
+                  <p className="singleBlogPostCategory">{data.category}</p>
+                  <h1 className="singleBlogPostTitle">{data.title}</h1>
+                  <span className="singleBlogPostDate">
+                    {dayjs(data.date).format("MMM DD, YYYY")}
+                  </span>
+                </div>
+                <div className="singleBlogPostImage">
+                  <img src={data.image} alt="" />
+                </div>
+                <div className="singleBlogPostMain">
+                  <h2 className="singleBlogPostSubtitle">{data.subtitle}</h2>
+                  <p className="singleBlogPostText">{data.text}</p>
+                </div>
+              </div>
+              <div className="singleBlogPostKeywords">
+                {data.keywords.split(",").map((keyword) => {
+                  return <span>{keyword}</span>;
+                })}
+              </div>
+              <div className="singleBlogPostDetails">
+                <div className="singleBlogPostDetailsMain">
+                  <span>
+                    <FontAwesomeIcon icon={faHeart} className="heartIcon" />{" "}
+                    {data.likes} likes
+                  </span>
+                  <span>{data.length} mins read</span>
+                  <span>{data.views} views</span>
+                </div>
+                <div className="singleBlogPostDetailsSocial">
+                  <span>
+                    <FontAwesomeIcon
+                      icon={faFacebook}
+                      className="facebookIcon"
+                    />
+                  </span>
+                  <span>
+                    <FontAwesomeIcon icon={faTwitter} className="twitterIcon" />
+                  </span>
+                  <span>
+                    <FontAwesomeIcon
+                      icon={faPinterest}
+                      className="pinterestIcon"
+                    />
+                  </span>
+                </div>
+              </div>
+              <SignMeUp />
+              <Author author={state.author} />
+              {data.comments.length ? (
+                <div className="comments">
+                  <h1 className="commentsTitle">Comments</h1>
+                  {data.comments.map(comment => {
+                    return <Comment comment={comment}/>
+                  })}
+                </div>
+              ) : (
+                ""
+              )}
+              <Form type="comment" url={`/blogs/${state._id}/comment`} />
             </div>
-            <div className="singleBlogPostImage">
-              <img src={state.image} alt="" />
-            </div>
-            <div className="singleBlogPostMain">
-              <h2 className="singleBlogPostSubtitle">{state.subtitle}</h2>
-              <p className="singleBlogPostText">{state.text}</p>
-            </div>
+            <Aside />
           </div>
-          <div className="singleBlogPostKeywords">
-            {state.keywords.split(",").map((keyword) => {
-              return <span>{keyword}</span>;
-            })}
-          </div>
-          <div className="singleBlogPostDetails">
-            <div className="singleBlogPostDetailsMain">
-              <span>
-                <FontAwesomeIcon icon={faHeart} className="heartIcon" />{" "}
-                {state.likes} likes
-              </span>
-              <span>{state.length} mins read</span>
-              <span>{state.views} views</span>
-            </div>
-            <div className="singleBlogPostDetailsSocial">
-              <span>
-                <FontAwesomeIcon icon={faFacebook} className="facebookIcon" />
-              </span>
-              <span>
-                <FontAwesomeIcon icon={faTwitter} className="twitterIcon" />
-              </span>
-              <span>
-                <FontAwesomeIcon icon={faPinterest} className="pinterestIcon" />
-              </span>
-            </div>
-          </div>
-          <SignMeUp />
-          <Author author={state.author} />
-          <div className="comments">
-            <h1 className="commentsTitle">Comments</h1>
-            <Comment />
-            <Comment />
-            <Comment />
-          </div>
-          <Form type="comment" />
-        </div>
-        <Aside />
-      </div>
+        ) : (
+          ""
+        )
+      ) : (
+        <Error />
+      )}
       <Footer />
     </>
   );

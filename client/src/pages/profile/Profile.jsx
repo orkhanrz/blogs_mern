@@ -37,7 +37,7 @@ function Profile() {
       <Header />
       <div className="profilePage">
         <div className="profileContainer">
-          <form autoComplete="off" onSubmit={handleSubmit}>
+          <form autoComplete="off" onSubmit={handleSubmit} className="customForm">
             <input
               type="text"
               name="fullname"
@@ -50,9 +50,6 @@ function Profile() {
                 }))
               }
             />
-            {/* {errors.fullname ? (
-                <p className="formError">{errors.fullname}</p>
-              ) : null} */}
             <input
               type="text"
               name="quote"
@@ -65,17 +62,12 @@ function Profile() {
                 }))
               }
             />
-            {/* {errors.password ? (
-                <p className="formError">{errors.password}</p>
-              ) : null} */}
             <input
               type="file"
               name="image"
               placeholder="Image"
               value=""
               onChange={(e) => {
-                console.log(e.target.files);
-
                 setForm((prevState) => ({
                   ...prevState,
                   [e.target.name]: e.target.files[0],

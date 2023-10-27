@@ -1,8 +1,8 @@
 .aside {
-  min-width: 300px;
-  max-width: 340px;
+  min-width: 180px;
+  max-width: 260px;
   width: 100%;
-  margin: 0 0 0 auto;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1024px) {

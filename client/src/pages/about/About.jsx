@@ -11,31 +11,33 @@ function About() {
     <>
       <Header />
       <div className="aboutPage">
-        <div className="aboutUsPrimary">
-          <div className="aboutUsPrimaryInfo">
-            <h1 className="aboutUsName">I am Sophie</h1>
-            <p className="aboutUsDescription">
-              Twenty years from now you will be more disappointed by the things
-              that you didn’t do than by the ones you did do. Sail away from the
-              safe harbor.
-            </p>
-            <span className="aboutUsFullname">Sophie James</span>
+        <div className="aboutPageContainer">
+          <div className="aboutUsPrimary">
+            <div className="aboutUsPrimaryInfo">
+              <h1 className="aboutUsName">I am Sophie</h1>
+              <p className="aboutUsDescription">
+                Twenty years from now you will be more disappointed by the
+                things that you didn’t do than by the ones you did do. Sail away
+                from the safe harbor.
+              </p>
+              <span className="aboutUsFullname">Sophie James</span>
+            </div>
+            <div className="aboutUsImage">
+              <img
+                src="https://malina.artstudioworks.net/wp-content/uploads/elementor/thumbs/For_home_4-o0m2yzkllmh0cjhhclcla4dz35vyc35hudn5oqpt72.jpg"
+                alt="about image"
+              />
+            </div>
           </div>
-          <div className="aboutUsImage">
-            <img
-              src="https://malina.artstudioworks.net/wp-content/uploads/elementor/thumbs/For_home_4-o0m2yzkllmh0cjhhclcla4dz35vyc35hudn5oqpt72.jpg"
-              alt="about image"
-            />
+          <div className="aboutMeSecondary">
+            <span>Explore</span>
+            <span>Dream</span>
+            <span>Discover</span>
           </div>
-        </div>
-        <div className="aboutMeSecondary">
-          <span>Explore</span>
-          <span>Dream</span>
-          <span>Discover</span>
-        </div>
-        <div className="aboutMeQuote">
-          <FontAwesomeIcon icon={faQuoteLeft} className="aboutMeQuoteIcon"/>
-          <p>You only live once, but if you do it right, once is enough.</p>
+          <div className="aboutMeQuote">
+            <FontAwesomeIcon icon={faQuoteLeft} className="aboutMeQuoteIcon" />
+            <p>You only live once, but if you do it right, once is enough.</p>
+          </div>
         </div>
       </div>
       <Footer />

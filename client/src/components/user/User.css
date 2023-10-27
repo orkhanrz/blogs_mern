@@ -8,7 +8,7 @@
   
   .aboutTitle {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: var(--fs-200);
     letter-spacing: 1px;
     position: relative;
     margin-bottom: 48px;
@@ -17,7 +17,7 @@
   .aboutTitle::after {
     content: "";
     height: 1px;
-    width: 22px;
+    width: 16px;
     background-color: black;
     position: absolute;
     bottom: -16px;
@@ -27,8 +27,9 @@
   
   .aboutImage {
     border-radius: 50%;
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 16px;
   }
   
   .aboutImage > img {
@@ -37,23 +38,24 @@
     object-fit: cover;
     overflow: hidden;
     border-radius: 50%;
+    cursor: pointer;
   }
   
   .aboutText {
-    font-size: 18px;
+    font-size: var(--fs-200);
     line-height: 28px;
     color: gray;
   }
   
   .aboutFullname {
     font-family: Sacramento;
-    font-size: 38px;
+    font-size: var(--fs-600);
   }
   
   .aboutDetails {
     border-bottom: 1px dashed lightgray;
-    padding-bottom: 32px;
-    margin-bottom: 48px;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
   }
   
   .aboutSocial {
@@ -70,5 +72,5 @@
   
   .aboutSocialItem {
     cursor: pointer;
-    font-size: 40px;
+    font-size: var(--fs-700);
   }

@@ -28,7 +28,7 @@ function Header() {
         .then((data) => {
           if (!data.success) {
             logout();
-            navigate('/signin');
+            navigate("/signin");
           }
         });
     }
@@ -114,7 +114,9 @@ function Header() {
                     <Link to="/profile" className="userControlsBtn">
                       Edit Profile
                     </Link>
-                    <button className="userControlsBtn">Add blog</button>
+                    <Link to="/blogs/add" className="userControlsBtn">
+                      Add blog
+                    </Link>
                     <button className="userControlsBtn" onClick={logout}>
                       Sign out
                     </button>

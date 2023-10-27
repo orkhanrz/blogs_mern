@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import {useNavigate} from 'react-router-dom';
 import "./User.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,6 +11,7 @@ import {
 import { userContext } from "../../context/UserContext";
 
 function User() {
+  const navigate = useNavigate();
   const { user } = useContext(userContext);
 
   return user ? (
@@ -19,6 +21,7 @@ function User() {
         <img
           src={user.image}
           alt="user photo"
+          onClick={() => navigate('/profile')}
         />
       </div>
       <div className="aboutDetails">

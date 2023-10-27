@@ -1,7 +1,7 @@
 .blogsPage {
   display: flex;
   flex-direction: row;
-  max-width: 1400px;
+  max-width: 1140px;
   width: 100%;
   margin: 80px auto;
   gap: 40px;
@@ -20,19 +20,22 @@
 .blogs.column .blogItem {
   display: flex;
   flex-direction: column;
+  width: 420px;
+  height: 600px;
 }
 
 .blogs.column .blogTitle {
-  font-size: 48px;
-  letter-spacing: 8px;
+  font-size: var(--fs-400);
 }
 
 .blogs.column .blogDescription {
   line-height: 32px;
+  font-size: var(--fs-200);
 }
 
 .blogs.column .blogImage {
-  max-width: unset;
+  max-width: unset; 
+  height: 100%;
 }
 
 .blogs.column .blogDetails {
@@ -44,12 +47,18 @@
 }
 
 .blogs.column .blogItem:first-child {
+  width: unset;
+  height: 780px;
   grid-column: 1 / 3;
   margin-bottom: 32px;
 }
 
 .blogs.column .blogItem:first-child .blogImage {
   max-height: unset;
+}
+
+.blogs.column .blogItem:first-child .blogTitle {
+  font-size: var(--fs-600);
 }
 
 .blogs.column .blogItem:first-child .blogDetailsMain {

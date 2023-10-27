@@ -1,10 +1,24 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const blogController = require('../controllers/blog');
+const upload = require("../utils/multer");
 
-router.get('/', blogController.getBlogs);
+const blogController = require("../controllers/blog");
+const userMiddleware = require("../middleware/user");
+const blogMiddleware = require("../middleware/blog");
 
-router.post('/', blogController.addBlog);
+router.get("/", blogController.getBlogs);
+
+router.get('/:id', blogController.getBlog);
+
+router.post(
+  "/",
+  userMiddleware.isAuth,
+  upload.single("image"),
+  blogMiddleware.validate,
+  blogController.addBlog
+);
+
+router.post('/:id/comment', userMiddleware.isAuth, blogController.addComment);
 
 module.exports = router;

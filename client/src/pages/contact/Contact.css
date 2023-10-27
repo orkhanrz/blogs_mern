@@ -1,12 +1,12 @@
 .contactPage {
-  max-width: 1400px;
+  max-width: 1140px;
   width: 100%;
   margin: 0 auto;
 }
 
 .contactPageImage {
   width: 100%;
-  height: 512px;
+  height: 420px;
   margin-bottom: 50px;
 }
 
@@ -26,20 +26,20 @@
   margin-bottom: 34px;
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 26px;
+  font-size: var(--fs-400);
   letter-spacing: 1px;
 }
 
 .contactPageMainInfoText {
-  font-size: 22px;
-  line-height: 40px;
+  font-size: var(--fs-300);
+  line-height: 32px;
 }
 
 .contactPageAside {
-  min-width: 380px;
-  max-width: 420px;
+  min-width: 300px;
+  max-width: 340px;
   width: 100%;
-  margin: 0 0 0 32px auto;
+  margin: 0 auto;
 }
 
 .contactPageAsideLocation {
@@ -50,39 +50,42 @@
 }
 
 .contactPageAsideLocationTitle {
-    margin-bottom: 32px;
-    position: relative;
+  margin-bottom: 32px;
+  position: relative;
+  font-size: var(--fs-200) !important;
+  letter-spacing: 1px;
 }
 
 .contactPageAsideLocationTitle:after {
-    content: '';
-    position: absolute;
-    bottom: -75%;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 1px;
-    width: 16px;
-    background-color: black;
+  content: "";
+  position: absolute;
+  bottom: -75%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 16px;
+  background-color: black;
 }
 
 .contactPageAsideLocationText {
-    color: gray;
-    font-style: italic;
-    font-weight: 400;
+  color: gray;
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-200);
 }
 
 .contactPageAsideLocationText > span {
-    color: black;
+  color: black;
 }
 
 .contactPageAsideLocationImage {
-    width: 100%;
+  width: 100%;
 }
 
 .contactPageAsideLocationImage > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .contactPageAsideLocationTitle {

@@ -4,7 +4,7 @@ footer {
     display: flex;
     justify-content: center;
     gap: 20px;
-    height: 300px;
+    height: 240px;
     position: relative;
     overflow: hidden;
 }
@@ -12,26 +12,28 @@ footer {
 .footerContent {
     display: flex;
     gap: 40px;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .footerContentItem {
     display: flex;
     justify-content: center;
-    font-size: 14px;
+    align-items: center;
+    font-size: var(--fs-100);
+    letter-spacing: 1px;
     text-transform: uppercase;
     height: fit-content;
     cursor: pointer;
 }
 
 .footerContentItemLogo {
-    margin-right: 12px;
-    font-size: 18px;
+    margin-right: 8px;
+    font-size: var(--fs-500);
 }
 
 .footerLogo {
     position: absolute;
-    bottom: -16%;
+    bottom: -24%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 112px;

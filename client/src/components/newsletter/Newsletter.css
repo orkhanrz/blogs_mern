@@ -1,22 +1,22 @@
 .newsLetter {
     text-align: center;
-    border-top: 8px solid #d87b4d;
+    border-top: 6px solid #d87b4d;
     box-shadow: 0px 4px 16px #e8e8e8;
-    padding: 32px;
+    padding: 24px;
 }
 
 .newsLetterLogo {
-    font-size: 48px;
+    font-size: var(--fs-800);
 }
 
 .newsLetterTitle {
-    font-size: 26px;
-    letter-spacing: 1px;
+    font-size: var(--fs-400);
 }
 
 .newsLetterText {
-    line-height: 32px;
-    margin-bottom: 32px;
+    font-size: var(--fs-200);
+    line-height: var(--fs-700);
+    margin-bottom: 24px;
 }
 
 .newsLetterInputWrapper {
@@ -24,14 +24,13 @@
     gap: 8px;
     align-items: center;
     border: 1px solid lightgray;
-    padding: 10px 24px;
-    margin-bottom: 16px;
+    padding: 4px 16px;
+    margin-bottom: 8px;
 }
 
 .newsLetterInputIcon {
-    font-size: 24px;
-    color: lightgray;
-    margin-right: 4px;
+    font-size: var(--fs-300);
+    color: var(--gray-clr);
 }
 
 .newsLetterInputWrapper > input {
@@ -41,7 +40,7 @@
     border: none;
     outline: none;
     color: gray;
-    font-size: 16px;
+    font-size: var(--fs-200);
 }
 
 .newsLetterInputWrapper > input::placeholder {
@@ -54,9 +53,9 @@
     color: #e8e8e8;
     text-transform: uppercase;
     border: none;
-    padding: 16px;
+    padding: 14px;
     letter-spacing: 1px;
     font-weight: 400;
-    font-size: 18px;
+    font-size: var(--fs-200);
     cursor: pointer;
 }

@@ -15,6 +15,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
+  font-size: var(--fs-500);
 }
 
 .headerContent {
@@ -31,6 +32,7 @@ header {
 .headerLink {
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: var(--fs-200);
 }
 
 .headerLink.active {
@@ -58,7 +60,7 @@ header {
 }
 
 .headerSocialItem {
-  font-size: 16px;
+  font-size: var(--fs-200);
   cursor: pointer;
 }
 
@@ -101,7 +103,7 @@ header {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: max-content;
 }
 
 .userControlsBtn:hover, .userControlsBtn:focus {

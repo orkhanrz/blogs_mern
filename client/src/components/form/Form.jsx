@@ -3,8 +3,6 @@ import "./Form.css";
 
 function Form({ type, url }) {
   const [details, setDetails] = useState({
-    name: "",
-    email: "",
     message: "",
   });
 
@@ -20,13 +18,22 @@ function Form({ type, url }) {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log(details);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(details),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="contactPageFormWrapper">
       <form className="contactPageForm">
-        <input
+        {/* <input
           type="text"
           name="name"
           placeholder="Name"
@@ -39,7 +46,7 @@ function Form({ type, url }) {
           placeholder="Email"
           value={details.email}
           onChange={changeHandler}
-        />
+        /> */}
         <textarea
           name="message"
           placeholder={`Add ${type}`}

@@ -2,6 +2,7 @@
   display: flex;
   margin-bottom: 80px;
   position: relative;
+  height: 220px;
 }
 
 
@@ -11,10 +12,10 @@
   left: 22px;
   background-color: rgb(66, 66, 66);
   color: white;
-  width: 80px;
-  height: 80px;
-  border: 4px solid white;
-  font-size: 28px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+  font-size: var(--fs-400);
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -24,15 +25,14 @@
 }
 
 .blogDetailsDate > span {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--fs-100);
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .blogImage {
-  max-width: 400px;
-  max-height: 300px;
+  max-width: 320px;
   width: 100%;
   cursor: pointer;
   overflow: hidden;
@@ -62,7 +62,7 @@
 .blogCategory {
   color: rgb(255, 120, 120);
   font-family: Sacramento, sans-serif;
-  font-size: 26px;
+  font-size: var(--fs-400);
   letter-spacing: 1px;
   cursor: pointer;
   text-transform: capitalize;
@@ -77,7 +77,7 @@
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 4px;
-  font-size: 28px;
+  font-size: var(--fs-500);
   cursor: pointer;
 }
 
@@ -87,7 +87,8 @@
 }
 
 .blogDescription {
-  font-size: 18px;
+  font-size: var(--fs-200);
+  line-height: var(--fs-500);
 }
 
 .blogDetailsExtra {
@@ -101,7 +102,7 @@
   margin-right: 32px;
   text-transform: uppercase;
   color: grey;
-  font-size: 14px;
+  font-size: var(--fs-100);
   letter-spacing: 1px;
 }
 .blogDetailsHeartIcon {
@@ -113,11 +114,11 @@
 
 .homeBlogs .blogItem:nth-child(4n) {
   flex-direction: column;
-  margin-bottom: 160px;
+  margin-bottom: 80px;
+  height: min-content;
 }
 
 .homeBlogs .blogItem:nth-child(4n) .blogImage {
-  height: 550px;
   max-height: unset;
 }
 

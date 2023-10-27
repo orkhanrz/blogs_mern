@@ -15,7 +15,18 @@ module.exports = {
     }
 
     return Object.keys(errors).length
-      ? res.status(400).json({ errors, success: false })
+      ? res.status(422).json({ errors, success: false })
       : next();
+  },
+  isAuth: (req, res, next) => {
+    const user = req.session.user;
+
+    if (!user) {
+      return res
+        .status(401)
+        .json({ success: false, message: "You are not authorized!" });
+    }
+
+    next();
   },
 };

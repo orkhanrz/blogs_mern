@@ -13,7 +13,7 @@ const store = new MongoDBStore(
     collection: "userSessions",
   },
   function (error) {
-    if (error){
+    if (error) {
       console.log(error);
       return next(error);
     }
