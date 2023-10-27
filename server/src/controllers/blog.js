@@ -43,10 +43,9 @@ module.exports = {
   },
   getBlog: async (req, res, next) => {
     try {
-      const blog = await Blog.findById(req.params.id).populate(
-        "comments.authorId",
-        ["image", "fullname", "quote"]
-      );
+      const blog = await Blog.findById(req.params.id)
+        .populate("comments.authorId", ["image", "fullname", "quote"])
+        .populate("author", ["image", "fullname", "quote"]);
 
       return res.status(200).json(blog);
     } catch (err) {
@@ -57,6 +56,12 @@ module.exports = {
     const blogId = req.params.id;
     const { message } = req.body;
     const comment = { text: message, authorId: req.session.user._id };
+
+    if (!message) {
+      return res
+        .status(422)
+        .json({ success: false, message: "Please type your comment" });
+    }
 
     try {
       const updatedBlog = await Blog.findByIdAndUpdate(
