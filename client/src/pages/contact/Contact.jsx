@@ -3,9 +3,38 @@ import "./Contact.css";
 
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import Form from '../../components/form/Form';
 
 function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const changeHandler = (e) => {
+    setForm((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    fetch("/contact", {
+      method: "POST",
+      body: JSON.stringify(form),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <Header />
@@ -55,7 +84,31 @@ function Contact() {
                 orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
-            <Form type='message'/>
+            <div className="contactPageFormWrapper">
+              <form className="messageForm">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={form.name}
+                  onChange={changeHandler}
+                />
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={changeHandler}
+                />
+                <textarea
+                  name="message"
+                  placeholder="Send message"
+                  value={form.message}
+                  onChange={changeHandler}
+                ></textarea>
+                <button onClick={submitHandler}>Send message</button>
+              </form>
+            </div>
           </div>
           <div className="contactPageAside">
             <div className="contactPageAsideLocation">

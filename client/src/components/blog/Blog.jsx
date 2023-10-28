@@ -15,7 +15,7 @@ function Blog({ item }) {
   const navigate = useNavigate();
 
   function redirect(){
-    navigate(`/blogs/${item._id}`, {state: item});
+    navigate(`/blogs/${item._id}`, {state: {_id: item._id}});
   };
 
   return (

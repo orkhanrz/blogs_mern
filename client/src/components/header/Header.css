@@ -33,6 +33,8 @@ header {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: var(--fs-200);
+  background-color: var(--white-clr);
+  border: none;
 }
 
 .headerLink.active {
@@ -99,13 +101,77 @@ header {
 }
 
 .userControlsBtn {
-  font-size: 16px;
+  font-size: var(--fs-200);
   background-color: transparent;
   border: none;
   cursor: pointer;
   width: max-content;
 }
 
-.userControlsBtn:hover, .userControlsBtn:focus {
+.userControlsBtn:hover,
+.userControlsBtn:focus {
   color: var(--main-clr);
+}
+
+.toggleMenu {
+  display: none;
+  z-index: 100;
+  cursor: pointer;
+  position: sticky;
+}
+
+.toggleMenu.active {
+  color: var(--main-clr);
+}
+
+.mobileHeader {
+  opacity: 0;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 100vh;
+  translate: 200px;
+  background-color: var(--white-clr);
+  transition: all 1s ease;
+}
+
+.mobileHeader.active {
+  translate: 0;
+}
+
+.mobileHeaderList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 32px;
+}
+
+.mobileHeaderIcons {
+  position: absolute;
+  bottom: 16px;
+}
+.headerSocial::after {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .headerList,
+  .headerIcons {
+    display: none;
+  }
+
+  .mobileHeader {
+    opacity: 1;
+  }
+
+  .toggleMenu {
+    display: block;
+  }
 }

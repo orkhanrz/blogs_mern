@@ -1,3 +1,8 @@
+.commentsTitle {
+  font-size: var(--fs-300);
+  margin-bottom: 24px;
+}
+
 .comment {
   display: flex;
   gap: 32px;
@@ -13,8 +18,8 @@
 }
 
 .commentImage {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -38,7 +43,7 @@
 .commentTitle {
   margin: 0;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: var(--fs-200);
   letter-spacing: 1px;
 }
 
@@ -50,18 +55,19 @@
 
 .commentDate {
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: var(--fs-200);
   color: var(--gray-clr);
 }
 
 .commentText {
   color: var(--gray-clr);
   letter-spacing: 1px;
-  font-size: 18px;
+  font-size: var(--fs-200);
   line-height: 32px;
 }
 
 .commentReplyBtn {
+  font-size: var(--fs-200);
   background: none;
   border: none;
   text-transform: uppercase;
