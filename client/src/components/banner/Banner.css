@@ -8,7 +8,7 @@
 
 .homeBanner > img {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   object-fit: cover;
 }
 
@@ -38,5 +38,17 @@
 
   to {
     left: 15%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homeBanner > img {
+    height: 30vh;
+  }
+  .homeBanner.loaded {
+    margin-bottom: 0;
+  }
+  .bannerText {
+    display: none;
   }
 }

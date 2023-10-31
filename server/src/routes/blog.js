@@ -19,6 +19,10 @@ router.post(
   blogController.addBlog
 );
 
-router.post('/:id/comment', userMiddleware.isAuth, blogController.addComment);
+router.post('/:id/comments', userMiddleware.isAuth, blogController.addComment);
+
+router.delete('/:id/comments/:commentId', userMiddleware.isAuth, blogController.deleteComment);
+
+router.patch('/:id/likes/:userId', blogController.likeBlog);
 
 module.exports = router;

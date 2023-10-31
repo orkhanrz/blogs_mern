@@ -27,8 +27,14 @@ const BlogSchema = new Schema({
   },
   keywords: String,
   likes: {
-    type: Number,
-    default: 0,
+    count: {
+      type: Number,
+      default: 0
+    },
+    users: [{
+      type: mongoose.Types.ObjectId,
+      ref: "User"
+    }]
   },
   length: Number,
   views: {

@@ -137,7 +137,7 @@ header {
   height: 100vh;
   translate: 200px;
   background-color: var(--white-clr);
-  transition: all 1s ease;
+  transition: all .5s ease;
 }
 
 .mobileHeader.active {

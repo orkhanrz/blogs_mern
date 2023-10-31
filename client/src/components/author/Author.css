@@ -1,48 +1,67 @@
-
 .aboutAuthor {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 32px 0 64px 0;
+  border-bottom: 1px solid var(--light-gray-clr);
+}
+
+.aboutAuthorImage {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.aboutAuthorImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.aboutAuthorTitle {
+  text-transform: uppercase;
+  font-size: var(--fs-300);
+  margin: 32px 0;
+}
+
+.aboutAuthorText {
+  font-size: var(--fs-300);
+  line-height: 32px;
+  color: var(--gray-clr);
+  margin: 32px 0;
+}
+
+.aboutAuthorSocial {
+  display: flex;
+  gap: 16px;
+}
+
+.aboutAuthorSocial > span {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.aboutAuthorSocial > span:hover {
+  color: var(--main-clr);
+}
+
+@media screen and (max-width: 768px) {
+  .aboutAuthor {
+    flex-direction: column;
+    gap: unset;
+    text-align: center;
+  }
+
+  .aboutAuthorDetails {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 40px;
-    padding: 32px 0 64px 0;
-    border-bottom: 1px solid var(--light-gray-clr);
-  }
-  
-  .aboutAuthorImage {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-  }
-  
-  .aboutAuthorImage > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  
-  .aboutAuthorTitle {
-    text-transform: uppercase;
-    font-size: var(--fs-300);
-    margin: 32px 0;
-  }
-  
-  .aboutAuthorText {
-    font-size: var(--fs-300);
-    line-height: 32px;
-    color: var(--gray-clr);
-    margin: 32px 0;
-  }
-  
-  .aboutAuthorSocial {
-    display: flex;
     gap: 16px;
+    margin-top: 32px;
   }
-  
-  .aboutAuthorSocial > span {
-    font-size: 22px;
-    cursor: pointer;
+
+  .aboutAuthorTitle, .aboutAuthorText {
+    margin: 0;
   }
-  
-  .aboutAuthorSocial > span:hover {
-    color: var(--main-clr);
-  }
+}

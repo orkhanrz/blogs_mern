@@ -105,6 +105,7 @@ body {
 html,
 body {
   overflow-x: hidden;
+  height: 100%;
 }
 
 li {
@@ -122,10 +123,13 @@ button {
   font-family: inherit;
 }
 
+.liked {
+  color: red;
+}
+
 .formError {
   color: red;
-  text-align: left;
-  font-size: 12px;
+  font-size: var(--fs-200);
 }
 
 .messageForm {
@@ -193,9 +197,10 @@ button {
 .customForm textarea {
   border: none;
   border-bottom: 1px solid var(--gray-clr);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   padding: 8px;
   font-family: inherit;
+  outline: none;
 }
 
 .customForm button {
@@ -211,121 +216,140 @@ button {
 }
 
 /* AUTH PAGE */
-.authPageBackground {
+.authPage {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+.authPageBlur {
   position: absolute;
   top: 0;
   left: 0;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  background-image: url("/public/images/form-bird.png");
+  background-image: url('/public/images/form-bird.png');
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
-  background-color: var(--light-gray-clr);
-  background-blend-mode: multiply;
-  filter: blur(32px);
-  -webkit-filter: blur(32px);
-  z-index: -1;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -100;
 }
 
 .authPageContainer {
-  max-width: 800px;
+  max-width: 1140px;
   width: 100%;
   margin: 0 auto;
-  padding: 64px 0;
-  display: flex;
+  padding: 32px 0;
 }
 
-.authImage {
-  width: 55%;
+.authFormContainer {
+  display: flex;
+  background-color: white;
+  box-shadow: 0 0 16px var(--gray-clr);
+  margin: 0 32px;
+}
+
+.authFormImage {
+  max-width: 570px;
+  width: 100%;
   position: relative;
 }
 
-.authImage > img {
+.authFormImage > img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .authImageTextWrapper {
+  max-width: 350px;
+  width: 100%;
   position: absolute;
   bottom: 32px;
-  color: var(--white-clr);
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  padding: 0 32px;
 }
 
 .authImageTitle {
-  font-size: 22px;
-  letter-spacing: 1px;
+  font-size: var(--fs-400);
+  color: var(--white-clr);
 }
 
 .authImageText {
-  font-size: 14px;
-  letter-spacing: 1px;
+  font-size: var(--fs-200);
+  color: var(--white-clr);
+}
+
+.authFormWrapper {
+  max-width: 370px;
+  width: 100%;
+  padding: 32px 64px;
 }
 
 .authForm {
-  box-sizing: border-box;
-  width: 45%;
-  text-align: center;
-  padding: 32px 64px;
-  background-color: var(--white-clr);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .authFormTitle {
-  font-family: Sacramento;
-  font-size: 48px;
-  margin-bottom: 48px;
+  font-family: 'Sacramento', sans-serif;
+  font-size: var(--fs-900);
+  margin-bottom: 64px;
+  text-align: center;
 }
 
 .authFormSubtitle {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: var(--fs-400);
   color: var(--gray-clr);
   margin-bottom: 32px;
+  text-align: center;
+}
+
+.formControl {
+  margin-bottom: 16px;
+}
+
+.authForm label {
+  font-size: var(--fs-200);
+  color: var(--gray-clr);
 }
 
 .authForm input {
-  display: block;
   width: 100%;
-  font-size: 14px;
+  padding: 8px 0;
+  font-size: var(--fs-300);
+  box-sizing: border-box;
   border: none;
   border-bottom: 1px solid var(--light-gray-clr);
-  margin-bottom: 16px;
-  font-family: inherit;
   outline: none;
-  padding: 4px 0px;
 }
 
 .authForm button {
-  padding: 8px 32px;
-  border-radius: 16px;
-  background-color: var(--black-clr);
-  border: 1px solid var(--black-clr);
+  background-color: var(--gray-clr);
   color: var(--white-clr);
-  text-transform: uppercase;
-  font-family: inherit;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 32px;
   cursor: pointer;
-  margin-top: 16px;
+  align-self: center;
 }
 
-.authForm button:focus,
-.authForm button:hover {
-  background-color: var(--main-clr);
-  border: 1px solid var(--main-clr);
+.authForm .account {
+  font-size: var(--fs-200);
+}
+
+.authForm .account > a {
+  color: #A4C4B6;
 }
 
 @media screen and (max-width: 1024px) {
-  .authImage {
+  .authFormContainer {
+    justify-content: center;
+  }
+
+  .authFormImage {
     display: none;
-  }
-
-  .authForm {
-    width: 60%;
-    margin: 0 auto;
-  }
-
-  .authFormTitle {
-    margin: 0;
   }
 }

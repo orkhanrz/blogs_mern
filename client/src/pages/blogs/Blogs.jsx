@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Blogs.css";
-import useFetch from "../../hooks/useFetch";
 
 import Header from "../../components/header/Header";
 import Blog from "../../components/blog/Blog";
@@ -8,34 +7,47 @@ import Aside from "../../components/aside/Aside";
 import Footer from "../../components/footer/Footer";
 import Pagination from "../../components/pagination/Pagination";
 import Error from "../error/Error";
+import Loader from "../../components/loader/Loader";
+import { blogsContext } from "../../context/BlogsContext";
 
 function Blogs() {
-  const { data, isLoading, error } = useFetch("/blogs");
-  const pages = data?.blogs.length / 9;
+  const { blogs, isLoading, error, setCurrentPage, totalPages, page } =
+    useContext(blogsContext);
 
   return !error ? (
     <>
       <Header />
       <div className="blogsPage">
         {!isLoading ? (
-          <>
-            <div className="blogsContainer">
-              <div className="blogs column">
-                {data.blogs.length
-                  ? data.blogs.map((item) => {
-                      return <Blog item={item} key={item._id} />;
-                    })
-                  : null}
-              </div>
-              {pages > 1 ? <Pagination pages={pages} /> : null}
+          <div className="blogsPageContainer">
+            <div className="blogs column">
+              {blogs.length
+                ? blogs.map((item) => {
+                    return <Blog item={item} key={item._id} />;
+                  })
+                : null}
             </div>
-            <Aside />
-          </>
-        ) : null}
+            {totalPages > 1 ? (
+              <Pagination
+                totalPages={totalPages}
+                setCurrentPage={setCurrentPage}
+                page={page}
+              />
+            ) : null}
+          </div>
+        ) : (
+          <Loader />
+        )}
+        <Aside />
       </div>
       <Footer />
     </>
-  ) : <Error status={505} message="Something went wrong, please try again later :/"/>;
+  ) : (
+    <Error
+      status={505}
+      message="Something went wrong, please try again later :/"
+    />
+  );
 }
 
 export default Blogs;

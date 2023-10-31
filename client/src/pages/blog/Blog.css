@@ -1,7 +1,7 @@
 .singleBlogPageContainer {
   max-width: 1140px;
-  width: 100%;
   margin: 60px auto;
+  padding: 0 40px;
 }
 
 .singleBlogPageContent {
@@ -69,6 +69,7 @@
 .singleBlogPostKeywords {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 16px;
   margin: 48px 0 0 0;
 }
@@ -141,11 +142,22 @@
   margin: 64px 0;
 }
 
-/* .commentsTitle::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  height: 2px;
-  width: 16px;
-  background-color: var(--black-clr);
-} */
+@media screen and (max-width: 768px) {
+  .singleBlogPageContent {
+    flex-direction: column;
+  }
+
+  .singleBlogPostImage {
+    height: unset;
+    margin: 32px 0 48px 0;
+  }
+
+  .singleBlogPostMain {
+    padding: unset;
+  }
+
+  .singleBlogPostDetails {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

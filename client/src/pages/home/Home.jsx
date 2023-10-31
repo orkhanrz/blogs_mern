@@ -1,5 +1,4 @@
-import React from "react";
-import useFetch from "../../hooks/useFetch";
+import React, { useContext } from "react";
 import "./Home.css";
 
 import Header from "../../components/header/Header";
@@ -8,44 +7,55 @@ import Blog from "../../components/blog/Blog";
 import Aside from "../../components/aside/Aside";
 import Footer from "../../components/footer/Footer";
 import Pagination from "../../components/pagination/Pagination";
+import Loader from "../../components/loader/Loader";
 import Error from "../error/Error";
+import { blogsContext } from "../../context/BlogsContext";
 
 function Home() {
-  const { data, isLoading, error } = useFetch("/blogs");
-  const featured = data?.blogs.filter((item) => item.featured);
-  const pages = data?.blogs.length / 9;
+  const {
+    blogs,
+    error,
+    isLoading,
+    page,
+    setCurrentPage,
+    totalPages,
+    featured,
+  } = useContext(blogsContext);
 
   return !error ? (
     <>
       <Header />
-      <div className="homeContainer">
-        <div className="homeContent">
+      <div className="homePage">
+        <Banner featured={featured} />
+        <div className="homeContainer">
           {!isLoading ? (
-            <>
-              <Banner featured={featured} />
-              <div className="homePage">
-                <div className="blogsContainer">
-                  {data.blogs.length ? (
-                    <div className="homeBlogs">
-                      {data.blogs.map((blog) => {
-                        return <Blog item={blog} key={blog._id} />;
-                      })}
-                    </div>
-                  ) : null}
-                  {pages > 1 ? <Pagination pages={pages} /> : null}
-                </div>
-                <Aside />
+            <div className="blogsContainer">
+              <div className="homeBlogs">
+                {blogs.map((blog) => {
+                  return <Blog item={blog} key={blog._id} />;
+                })}
               </div>
-            </>
+              {totalPages > 1 ? (
+                <Pagination
+                  totalPages={totalPages}
+                  setCurrentPage={setCurrentPage}
+                  page={page}
+                />
+              ) : null}
+            </div>
           ) : (
-            ""
+            <Loader />
           )}
+          <Aside />
         </div>
       </div>
       <Footer />
     </>
   ) : (
-    <Error message='Something went wrong, please try again later :/' status='505'/>
+    <Error
+      message="Something went wrong, please try again later :/"
+      status="505"
+    />
   );
 }
 

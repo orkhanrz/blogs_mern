@@ -38,7 +38,7 @@ function AddBlog() {
       formData.append(key, form[key]);
     }
 
-    fetch("/blogs", { method: "POST", body: formData })
+    fetch("/api/blogs", { method: "POST", body: formData })
       .then((res) => res.json())
       .then((data) => {
         if (data.errors) {

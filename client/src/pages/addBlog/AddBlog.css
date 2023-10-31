@@ -2,7 +2,6 @@
   max-width: 1400px;
   width: 100%;
   margin: 16px auto;
-  height: calc(100vh - (333.88px));
   display: flex;
   justify-content: center;
   align-items: center;

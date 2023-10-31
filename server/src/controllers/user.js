@@ -74,18 +74,20 @@ module.exports = {
         { expiresIn: process.env.JWT_EXPIRY }
       );
 
+      const signedInUser = {
+        _id: user._id,
+        email: user.email,
+        fullname: user.fullname,
+        image: user.image,
+        quote: user.quote,
+      };
+
       req.session.token = token;
-      req.session.user = user;
+      req.session.user = signedInUser;
 
       res.status(200).json({
         success: true,
-        user: {
-          _id: user._id,
-          email: user.email,
-          fullname: user.fullname,
-          image: user.image,
-          quote: user.quote,
-        },
+        user: signedInUser,
       });
     } catch (err) {
       next(err);

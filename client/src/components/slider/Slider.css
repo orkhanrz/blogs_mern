@@ -36,14 +36,14 @@
 }
 
 .homeBannerSliderItemImage:hover > img {
-    scale: 1.1;
+  scale: 1.1;
 }
 
 .homeBannerSliderItemImage > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: scale .5s ease;
+  transition: scale 0.5s ease;
 }
 
 .homeBannerSliderButton {
@@ -63,4 +63,10 @@
   font-size: var(--fs-200);
   text-transform: uppercase;
   color: gray;
+}
+
+@media screen and (max-width: 768px) {
+  .homeBannerSlider {
+    display: none;
+  }
 }

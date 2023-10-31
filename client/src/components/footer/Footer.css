@@ -10,9 +10,11 @@ footer {
 }
 
 .footerContent {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     margin-top: 80px;
+    z-index: 100;
 }
 
 .footerContentItem {
@@ -40,4 +42,10 @@ footer {
     font-family: Sacramento;
     color: rgb(48, 48, 48);
     letter-spacing: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    .footerContent {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

@@ -23,7 +23,7 @@ function Contact() {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    fetch("/contact", {
+    fetch("/api/contact", {
       method: "POST",
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },

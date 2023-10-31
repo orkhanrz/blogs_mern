@@ -38,7 +38,7 @@ app.use(
 app.use(
   session({
     secret: process.env.MONGODB_SESSION_SECRET,
-    cookie: { maxAge: 5 * 60 * 1000 },
+    cookie: { maxAge: 10 * 60 * 1000 },
     store: store,
     resave: false,
     saveUninitialized: false,
@@ -46,16 +46,10 @@ app.use(
 );
 
 //Routes
-app.use("/users", userRoutes);
-app.use("/blogs", blogRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/blogs", blogRoutes);
 
-//Not found page
-app.use("*", (req, res, next) => {
-  console.log("error");
-  return res.status(404).json({ message: "Page not found :/" });
-});
-
-app.use("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(
     path.join(__dirname, "..", "..", "client", "build", "index.html")
   );

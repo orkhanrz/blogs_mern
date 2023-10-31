@@ -4,10 +4,11 @@ import "./Slider.css";
 import dayjs from 'dayjs';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function Slider({ featured }) {
   const scroll = (direction) => {
-    let width = direction * 540;
+    let width = direction * 440;
 
     document
       .querySelector(".homeBannerSliderItems")
@@ -25,7 +26,7 @@ function Slider({ featured }) {
       <div className="homeBannerSliderItems">
         {featured.map((item) => {
           return (
-            <div className="homeBannerSliderItem" key={item._id}>
+            <Link to={`/blogs/${item._id}`} className="homeBannerSliderItem" key={item._id}>
               <div className="homeBannerSliderItemImage">
                 <img src={item.image} alt="banner item" />
               </div>
@@ -33,7 +34,7 @@ function Slider({ featured }) {
                 <h1 className="title">{item.title}</h1>
                 <span className="date">{dayjs(item.date).format('MMM DD, YYYY')}</span>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

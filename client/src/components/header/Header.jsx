@@ -24,7 +24,7 @@ function Header() {
 
   useEffect(() => {
     if (user) {
-      fetch("/users/token", { method: "POST" })
+      fetch("/api/users/token", { method: "POST" })
         .then((res) => res.json())
         .then((data) => {
           if (!data.success) {
@@ -204,6 +204,14 @@ function Header() {
                     }`}
                   >
                     Signin
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className={`headerLink ${
+                      pathname === "/signup" && "active"
+                    }`}
+                  >
+                    Signup
                   </Link>
                 </>
               )}

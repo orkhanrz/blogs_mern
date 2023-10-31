@@ -38,6 +38,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
 }
 
 .commentTitle {
@@ -60,20 +62,38 @@
 }
 
 .commentText {
-  color: var(--gray-clr);
+  color: var(--black-clr);
   letter-spacing: 1px;
   font-size: var(--fs-200);
   line-height: 32px;
 }
 
-.commentReplyBtn {
+.commentReplyBtn, .commentDeleteBtn {
   font-size: var(--fs-200);
   background: none;
   border: none;
   text-transform: uppercase;
-  color: var(--main-clr);
   cursor: pointer;
   letter-spacing: 1px;
   padding: 0;
   margin: 0;
+}
+
+.commentReplyBtn {
+  color: var(--main-clr);
+}
+
+.commentDeleteBtn {
+  color: red;
+}
+
+
+@media screen and (max-width: 768px) {
+  .commentImage {
+    display: none;
+  }
+
+  .commentText {
+    line-height: 22px;
+  }
 }

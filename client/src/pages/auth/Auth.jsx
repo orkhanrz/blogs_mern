@@ -15,7 +15,7 @@ function Auth() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/users" + url, {
+    fetch("/api/users" + url, {
       method: "POST",
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },
