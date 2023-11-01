@@ -3,10 +3,11 @@ import { createContext, useState } from "react";
 const userContext = createContext();
 
 function UserContextProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   const login = (user) => {
     setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
   };
 
   const logout = () => {
@@ -15,16 +16,17 @@ function UserContextProvider({ children }) {
       .then((data) => {
         if (data.success) {
           setUser(null);
+          localStorage.removeItem("user");
         }
       });
   };
 
   const edit = (user) => {
     setUser((prevState) => {
-      return {
-        ...prevState,
-        ...user,
-      };
+      const editedUser = { ...prevState, ...user };
+      localStorage.setItem("user", JSON.stringify(editedUser));
+
+      return editedUser;
     });
   };
 

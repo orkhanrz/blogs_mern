@@ -37,43 +37,53 @@ function Profile() {
       <Header />
       <div className="profilePage">
         <div className="profileContainer">
-          <form autoComplete="off" onSubmit={handleSubmit} className="customForm">
-            <input
-              type="text"
-              name="fullname"
-              placeholder="fullname"
-              value={form.fullname}
-              onChange={(e) =>
-                setForm((prevState) => ({
-                  ...prevState,
-                  [e.target.name]: e.target.value,
-                }))
-              }
-            />
-            <input
-              type="text"
-              name="quote"
-              placeholder="Quote"
-              value={form.quote}
-              onChange={(e) =>
-                setForm((prevState) => ({
-                  ...prevState,
-                  [e.target.name]: e.target.value,
-                }))
-              }
-            />
-            <input
-              type="file"
-              name="image"
-              placeholder="Image"
-              value=""
-              onChange={(e) => {
-                setForm((prevState) => ({
-                  ...prevState,
-                  [e.target.name]: e.target.files[0],
-                }));
-              }}
-            />
+          <form
+            autoComplete="off"
+            onSubmit={handleSubmit}
+            className="customForm"
+          >
+            <div className="formControl">
+              <input
+                type="text"
+                name="fullname"
+                placeholder="fullname"
+                value={form.fullname}
+                onChange={(e) =>
+                  setForm((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+              />
+            </div>
+            <div className="formControl">
+              <input
+                type="text"
+                name="quote"
+                placeholder="Quote"
+                value={form.quote}
+                onChange={(e) =>
+                  setForm((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+              />
+            </div>
+            <div className="formControl">
+              <input
+                type="file"
+                name="image"
+                placeholder="Image"
+                value=""
+                onChange={(e) => {
+                  setForm((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.files[0],
+                  }));
+                }}
+              />
+            </div>
             <button>Update</button>
           </form>
         </div>

@@ -188,19 +188,12 @@ button {
 }
 
 /* CUSTOM FORM */
-.customForm {
-  display: flex;
-  flex-direction: column;
-}
-
 .customForm input,
 .customForm textarea {
   border: none;
   border-bottom: 1px solid var(--gray-clr);
-  margin-bottom: 8px;
-  padding: 8px;
-  font-family: inherit;
   outline: none;
+  width: 100%;
 }
 
 .customForm button {

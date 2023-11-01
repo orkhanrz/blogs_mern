@@ -10,29 +10,27 @@ function BlogsContextProvider({ children }) {
   const [error, setError] = useState(null);
   const [featured, setFeatured] = useState([]);
 
-  useEffect(() => {
-    fetch(`/api/blogs?page=${page}&limit=9`)
-      .then((res) => res.json())
-      .then((data) => {
-        setIsLoading(false);
-        setBlogs(data.blogs);
-        setTotalPages(Math.ceil(data.length / 9));
-        setFeatured(data.featured);
-      })
-      .catch((err) => setError(err.message));
-  }, []);
+  async function loadData() {
+    try {
+      const res = await fetch(`/api/blogs?page=${page}&limit=9`);
+      const data = await res.json();
 
-  useEffect(() => {
-    setIsLoading(true);
+      return data;
+    } catch (err) {
+      return err;
+    }
+  }
 
-    fetch(`/api/blogs?page=${page}&limit=9`)
-      .then((res) => res.json())
-      .then((data) => {
-        setIsLoading(false);
-        setBlogs(data.blogs);
-      })
-      .catch((err) => setError(err.message));
-  }, [page]);
+  async function reloadBlogs() {
+    try {
+      const data = await loadData();
+      setBlogs(data.blogs);
+      setTotalPages(Math.ceil(data.length / 9));
+      setFeatured(data.featured);
+    } catch (err) {
+      setError(err.message);
+    }
+  }
 
   function setCurrentPage(p) {
     if (p >= 1 && p <= totalPages) {
@@ -40,7 +38,57 @@ function BlogsContextProvider({ children }) {
     }
   }
 
-  return <blogsContext.Provider value={{blogs, isLoading, error, totalPages, page, featured, setCurrentPage}}>{children}</blogsContext.Provider>;
+  useEffect(() => {
+    setIsLoading(true);
+
+    async function getData() {
+      try {
+        const data = await loadData();
+
+        setIsLoading(false);
+        setBlogs(data.blogs);
+        setTotalPages(Math.ceil(data.length / 9));
+        setFeatured(data.featured);
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    async function getData() {
+      try {
+        const data = await loadData();
+        setIsLoading(false);
+        setBlogs(data.blogs);
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+
+    getData();
+  }, [page]);
+
+  return (
+    <blogsContext.Provider
+      value={{
+        blogs,
+        isLoading,
+        error,
+        totalPages,
+        page,
+        featured,
+        reloadBlogs,
+        setCurrentPage,
+      }}
+    >
+      {children}
+    </blogsContext.Provider>
+  );
 }
 
 export { BlogsContextProvider, blogsContext };

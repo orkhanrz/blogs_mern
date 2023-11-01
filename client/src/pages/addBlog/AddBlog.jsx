@@ -5,6 +5,9 @@ import "./AddBlog.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 function AddBlog() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -46,7 +49,7 @@ function AddBlog() {
           return setErrors(errors);
         }
 
-        navigate('/');
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -59,71 +62,92 @@ function AddBlog() {
       <div className="addBlogPage">
         <div className="addBlogPageContainer">
           <form autoComplete="off" className="customForm">
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              onChange={handleChange}
-            />
-            {errors.title ? <p className="formError">{errors.title}</p> : ""}
-            <input
-              type="text"
-              name="subtitle"
-              placeholder="Subtitle"
-              onChange={handleChange}
-            />
-            {errors.subtitle ? (
-              <p className="formError">{errors.subtitle}</p>
-            ) : (
-              ""
-            )}
-            <input
-              type="text"
-              name="category"
-              placeholder="Category"
-              onChange={handleChange}
-            />
-            {errors.category ? (
-              <p className="formError">{errors.category}</p>
-            ) : (
-              ""
-            )}
-            <textarea
-              name="text"
-              placeholder="Text"
-              onChange={handleChange}
-            ></textarea>
-            {errors.text ? <p className="formError">{errors.text}</p> : ""}
-            <input
-              type="text"
-              name="keywords"
-              placeholder="Keywords [sport, gym, reading]"
-              onChange={handleChange}
-            />
-            {errors.keywords ? (
-              <p className="formError">{errors.keywords}</p>
-            ) : (
-              ""
-            )}
-            <input
-              type="text"
-              name="length"
-              placeholder="Length (minutes)"
-              onChange={handleChange}
-            />
-            {errors.length ? <p className="formError">{errors.length}</p> : ""}
-            <input
-              type="file"
-              name="image"
-              placeholder="Image"
-              onChange={(e) =>
-                setForm((prevState) => ({
-                  ...prevState,
-                  image: e.target.files[0],
-                }))
-              }
-            />
-            {errors.image ? <p className="formError">{errors.image}</p> : ""}
+            <div className="formControl">
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                onChange={handleChange}
+              />
+              {errors.title ? <p className="formError">{errors.title}</p> : ""}
+            </div>
+            <div className="formControl">
+              <input
+                type="text"
+                name="subtitle"
+                placeholder="Subtitle"
+                onChange={handleChange}
+              />
+              {errors.subtitle ? (
+                <p className="formError">{errors.subtitle}</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="formControl">
+              <input
+                type="text"
+                name="category"
+                placeholder="Category"
+                onChange={handleChange}
+              />
+              {errors.category ? (
+                <p className="formError">{errors.category}</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="formControl">
+              <input
+                type="text"
+                name="keywords"
+                placeholder="Keywords [sport, gym, reading]"
+                onChange={handleChange}
+              />
+              {errors.keywords ? (
+                <p className="formError">{errors.keywords}</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="formControl">
+              <input
+                type="text"
+                name="length"
+                placeholder="Length (minutes)"
+                onChange={handleChange}
+              />
+              {errors.length ? (
+                <p className="formError">{errors.length}</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="formControl">
+              <input
+                type="file"
+                name="image"
+                placeholder="Image"
+                onChange={(e) =>
+                  setForm((prevState) => ({
+                    ...prevState,
+                    image: e.target.files[0],
+                  }))
+                }
+              />
+              {errors.image ? <p className="formError">{errors.image}</p> : ""}
+            </div>
+            <div className="formControl">
+              <CKEditor
+                data={form.text}
+                editor={ClassicEditor}
+                onChange={(e, editor) => {
+                  const data = editor.getData();
+                  setForm((prevState) => ({ ...prevState, text: data }));
+                }}
+              />
+              {errors.text ? <p className="formError">{errors.text}</p> : ""}
+            </div>
             <button onClick={handleSubmit}>Add blog</button>
           </form>
         </div>

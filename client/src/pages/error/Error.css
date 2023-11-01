@@ -10,6 +10,7 @@
 
 .errorContainer {
   text-align: center;
+  padding: 16px;
 }
 
 .errorContainer h1 {

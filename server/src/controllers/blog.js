@@ -24,6 +24,8 @@ module.exports = {
         ]);
       }
 
+      // console.log(featuredBlogs);
+
       res.status(200).json({ blogs, featured: featuredBlogs, length:  blogsLength});
     } catch (err) {
       next(err);
@@ -63,6 +65,7 @@ module.exports = {
 
       return res.status(200).json(blog);
     } catch (err) {
+      console.log(err);
       next(err);
     }
   },

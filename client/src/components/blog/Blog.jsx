@@ -6,10 +6,12 @@ import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { userContext } from "../../context/UserContext";
+import { blogsContext } from "../../context/BlogsContext";
 
 function Blog({ item }) {
   const navigate = useNavigate();
   const { user } = useContext(userContext);
+  const {reloadBlogs} = useContext(blogsContext);
   const [liked, setLiked] = useState({
     state: item.likes.users.includes(user?._id),
     count: item.likes.count,
@@ -37,6 +39,8 @@ function Blog({ item }) {
             count: prevState.state ? prevState.count - 1 : prevState.count + 1,
             state: !prevState.state,
           }));
+
+          reloadBlogs();
       })
       .catch((err) => console.log(err));
   }

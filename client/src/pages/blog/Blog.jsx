@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import "./Blog.css";
 import dayjs from "dayjs";
-import { userContext } from "../../context/UserContext";
+import parse from "html-react-parser";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -19,14 +19,17 @@ import Aside from "../../components/aside/Aside";
 import SignMeUp from "../../components/signMeUp/SignMeUp";
 import Author from "../../components/author/Author";
 import Comment from "../../components/comment/Comment";
-import Loader from '../../components/loader/Loader';
+import Loader from "../../components/loader/Loader";
 import Error from "../error/Error";
+import { userContext } from "../../context/UserContext";
+import { blogsContext } from "../../context/BlogsContext";
 
 function Blog() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { user } = useContext(userContext);
-  const { data, isLoading, error } = useFetch(`/api/${pathname}`);
+  const { reloadBlogs } = useContext(blogsContext);
+  const { data, isLoading, error } = useFetch("/api" + pathname);
   const [form, setForm] = useState({ message: "" });
   const [formError, setFormError] = useState({ message: null });
   const [liked, setLiked] = useState({ state: false, count: 0 });
@@ -34,8 +37,7 @@ function Blog() {
 
   const likePost = () => {
     if (!user) {
-      navigate("/signin");
-      return;
+      return navigate("/signin");
     }
 
     fetch(`/api/blogs/${data._id}/likes/${user._id}`, {
@@ -43,12 +45,15 @@ function Blog() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data.success &&
+        if (data.success) {
           setLiked((prevState) => ({
             ...prevState,
             count: prevState.state ? prevState.count - 1 : prevState.count + 1,
             state: !prevState.state,
           }));
+
+          reloadBlogs();
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -59,16 +64,22 @@ function Blog() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data.success &&
+        if (data.success) {
           setComments((prevState) => {
             return prevState.filter((comment) => comment._id !== commentId);
           });
+          reloadBlogs();
+        }
       })
       .catch((err) => console.log(err));
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    if (!user) {
+      return navigate("/signin");
+    }
 
     fetch(`/api/blogs/${data._id}/comments`, {
       method: "POST",
@@ -82,7 +93,7 @@ function Blog() {
           setForm({ message: "" });
           setFormError({ message: null });
           setComments((prevState) => [...prevState, comment]);
-          console.log(comment);
+          reloadBlogs();
         } else {
           setFormError({ message: data.message });
         }
@@ -100,14 +111,14 @@ function Blog() {
     setComments(data?.comments);
   }, [data]);
 
-  return (
+  return !error ? (
     <>
       <Header />
-      {!error ? (
-        <div className="singleBlogPage">
-          <div className="singleBlogPageContainer">
-            <div className="singleBlogPageContent">
-              {!isLoading ? <div className="singleBlogMain">
+      <div className="singleBlogPage">
+        <div className="singleBlogPageContainer">
+          <div className="singleBlogPageContent">
+            {!isLoading ? (
+              <div className="singleBlogMain">
                 <div className="singleBlogPost">
                   <div className="singleBlogPostHeader">
                     <p className="singleBlogPostCategory">{data.category}</p>
@@ -121,12 +132,12 @@ function Blog() {
                   </div>
                   <div className="singleBlogPostMain">
                     <h2 className="singleBlogPostSubtitle">{data.subtitle}</h2>
-                    <p className="singleBlogPostText">{data.text}</p>
+                    <p className="singleBlogPostText">{parse(data.text)}</p>
                   </div>
                 </div>
                 <div className="singleBlogPostKeywords">
-                  {data.keywords.split(",").map((keyword) => {
-                    return <span>{keyword}</span>;
+                  {data.keywords.split(",").map((keyword, i) => {
+                    return <span key={i}>{keyword}</span>;
                   })}
                 </div>
                 <div className="singleBlogPostDetails">
@@ -202,16 +213,18 @@ function Blog() {
                     <button onClick={submitHandler}>Post comment</button>
                   </form>
                 </div>
-              </div> : <Loader />}
-              <Aside />
-            </div>
+              </div>
+            ) : (
+              <Loader />
+            )}
+            <Aside />
           </div>
         </div>
-      ) : (
-        <Error />
-      )}
+      </div>
       <Footer />
     </>
+  ) : (
+    <Error message={error} status={505} />
   );
 }
 

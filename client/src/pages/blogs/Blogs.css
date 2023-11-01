@@ -41,6 +41,7 @@
 
 .blogs.column .blogDetails {
   padding: 16px 0px;
+  max-width: 360px;
 }
 
 .blogs.column .blogDetailsMain {
@@ -56,6 +57,10 @@
 
 .blogs.column .blogItem:first-child .blogImage {
   max-height: unset;
+}
+
+.blogs.column .blogItem:first-child .blogDetails {
+  max-width: unset;
 }
 
 .blogs.column .blogItem:first-child .blogTitle {

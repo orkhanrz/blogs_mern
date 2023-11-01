@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   validate: (req, res, next) => {
     const { title, subtitle, category, text, keywords, length } = req.body;
@@ -30,6 +32,19 @@ module.exports = {
 
     if (!image) {
       errors.image = "Please upload a file!";
+    }
+
+    if (image) {
+      const ext = path.extname(image.filename);
+
+      if (
+        ext !== ".png" &&
+        ext !== ".jpg" &&
+        ext !== ".gif" &&
+        ext !== ".jpeg"
+      ) {
+        errors.image = "Please provide a valid image!";
+      }
     }
 
     return Object.keys(errors).length
