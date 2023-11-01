@@ -95,15 +95,15 @@
   --fs-900: 2.5rem;
 }
 
-body {
+*, *::after, *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
 }
 
 html,
 body {
+  font-family: Montserrat, sans-serif;
   overflow-x: hidden;
   height: 100%;
 }
@@ -130,6 +130,7 @@ button {
 .formError {
   color: red;
   font-size: var(--fs-200);
+  margin-top: 8px;
 }
 
 .messageForm {

@@ -11,7 +11,7 @@ import { blogsContext } from "../../context/BlogsContext";
 function Blog({ item }) {
   const navigate = useNavigate();
   const { user } = useContext(userContext);
-  const {reloadBlogs} = useContext(blogsContext);
+  const { reloadBlogs } = useContext(blogsContext);
   const [liked, setLiked] = useState({
     state: item.likes.users.includes(user?._id),
     count: item.likes.count,
@@ -40,7 +40,7 @@ function Blog({ item }) {
             state: !prevState.state,
           }));
 
-          reloadBlogs();
+        reloadBlogs();
       })
       .catch((err) => console.log(err));
   }
@@ -53,6 +53,9 @@ function Blog({ item }) {
     <div className="blogItem">
       <div className="blogImage" onClick={redirect}>
         <img src={item.image} alt="" />
+        <p className="blogDate">
+          {date.day} <span>{date.month}</span>
+        </p>
       </div>
       <div className="blogDetails">
         <div className="blogDetailsMain">
@@ -67,9 +70,7 @@ function Blog({ item }) {
             <span className="blogDetailsExtraItem">
               <FontAwesomeIcon
                 icon={faHeart}
-                className={`blogDetailsHeartIcon ${
-                  liked.state ? "liked" : ""
-                }`}
+                className={`heartIcon ${liked.state ? "liked" : ""}`}
                 onClick={likePost}
               />
               {liked.count} likes
@@ -78,12 +79,9 @@ function Blog({ item }) {
               {item.length} mins read
             </span>
             <span className="blogDetailsExtraItem">{item.views} views</span>
-            <p className="blogDetailsDate">
-              {date.day} <span>{date.month}</span>
-            </p>
           </div>
           <span className="blogDetailsExtraRight">
-            <FontAwesomeIcon icon={faArrowRight} onClick={redirect} />
+            <FontAwesomeIcon className="arrowIcon" icon={faArrowRight} onClick={redirect} />
           </span>
         </div>
       </div>

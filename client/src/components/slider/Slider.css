@@ -1,17 +1,16 @@
 .homeBannerSlider {
-  max-width: 1400px;
+  max-width: 1300px;
   width: 100%;
   position: absolute;
-  bottom: -320px;
+  bottom: -340px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 40px;
 }
 
 .homeBannerSliderItems {
-  width: 1260px;
+  width: 1200px;
   margin: 0 auto;
   display: flex;
   gap: 60px;
@@ -23,7 +22,7 @@
 }
 
 .homeBannerSliderItem {
-  border: 10px solid white;
+  border: 8px solid white;
   background: white;
   cursor: pointer;
   text-align: center;

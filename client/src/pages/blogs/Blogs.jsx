@@ -20,25 +20,27 @@ function Blogs() {
       <div className="blogsPage">
         {!isLoading ? (
           <div className="blogsPageContainer">
-            <div className="blogs column">
-              {blogs.length
-                ? blogs.map((item) => {
-                    return <Blog item={item} key={item._id} />;
-                  })
-                : null}
+            <div className="blogsPageBlogsContainer">
+              <div className="blogsPageBlogs">
+                {blogs.length
+                  ? blogs.map((item) => {
+                      return <Blog item={item} key={item._id} />;
+                    })
+                  : null}
+              </div>
+              {totalPages > 1 ? (
+                <Pagination
+                  totalPages={totalPages}
+                  setCurrentPage={setCurrentPage}
+                  page={page}
+                />
+              ) : null}
             </div>
-            {totalPages > 1 ? (
-              <Pagination
-                totalPages={totalPages}
-                setCurrentPage={setCurrentPage}
-                page={page}
-              />
-            ) : null}
+            <Aside />
           </div>
         ) : (
           <Loader />
         )}
-        <Aside />
       </div>
       <Footer />
     </>

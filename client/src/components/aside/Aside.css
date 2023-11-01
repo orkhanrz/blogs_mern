@@ -8,5 +8,6 @@
 @media screen and (max-width: 1024px) {
   .aside {
     max-width: 440px;
+    padding: 0 32px;
   }
 }

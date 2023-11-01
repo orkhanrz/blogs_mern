@@ -29,7 +29,7 @@ function Home() {
         <Banner featured={featured} />
         <div className="homeContainer">
           {!isLoading ? (
-            <div className="blogsContainer">
+            <div className="homeBlogsContainer">
               <div className="homeBlogs">
                 {blogs.map((blog) => {
                   return <Blog item={blog} key={blog._id} />;
