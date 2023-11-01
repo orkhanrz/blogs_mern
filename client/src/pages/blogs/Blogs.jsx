@@ -18,8 +18,8 @@ function Blogs() {
     <>
       <Header />
       <div className="blogsPage">
-        {!isLoading ? (
-          <div className="blogsPageContainer">
+        <div className="blogsPageContainer">
+          {!isLoading ? (
             <div className="blogsPageBlogsContainer">
               <div className="blogsPageBlogs">
                 {blogs.length
@@ -36,11 +36,12 @@ function Blogs() {
                 />
               ) : null}
             </div>
-            <Aside />
-          </div>
-        ) : (
-          <Loader />
-        )}
+          ) : (
+            <Loader />
+          )}
+
+          <Aside />
+        </div>
       </div>
       <Footer />
     </>
