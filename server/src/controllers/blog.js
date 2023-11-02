@@ -43,17 +43,6 @@ module.exports = {
       next(err);
     }
   },
-  getUserBlogs: async (req, res, next) => {
-    const userId = req.params.userId;
-
-    try {
-      const blogs = await Blog.find({author: userId});
-
-      res.status(200).json(blogs);
-    } catch (err){
-      next(err);
-    };
-  },
   addBlog: async (req, res, next) => {
     const { title, subtitle, category, text, keywords, length, featured } =
       req.body;
@@ -82,6 +71,8 @@ module.exports = {
   },
   deleteBlog: async (req, res, next) => {
     const blogId = req.params.id;
+
+    return res.status(500).json({success: false, message: 'You cannot delete blog!'});
 
     try {
       await Blog.deleteOne({_id: blogId});

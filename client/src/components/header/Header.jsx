@@ -115,6 +115,9 @@ function Header() {
                     <Link to="/profile" className="userControlsBtn">
                       Edit Profile
                     </Link>
+                    <Link to="/myblogs" className="userControlsBtn">
+                      My blogs
+                    </Link>
                     <Link to="/blogs/add" className="userControlsBtn">
                       Add blog
                     </Link>
@@ -187,6 +190,9 @@ function Header() {
                 <>
                   <Link to="/profile" className="headerLink">
                     Edit Profile
+                  </Link>
+                  <Link to="/myblogs" className="headerLink">
+                    My blogs
                   </Link>
                   <Link to="/blogs/add" className="headerLink">
                     Add blog

@@ -1,0 +1,46 @@
+.userBlogsContainer {
+    max-width: 1140px;
+    width: 100%;
+    margin: 32px auto;
+    gap: 48px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.userBlogsTable {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid var(--light-gray-clr);
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    color: var(--gray-clr);
+    font-size: var(--fs-200);
+}
+
+th, td {
+    padding: 2px 8px;
+}
+
+.tableLongText {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tableActionBtn {
+    cursor: pointer;
+}
+
+.editBlogBtn {
+    color: #26619c;
+}
+
+.deleteBlogBtn {
+    color: #ff0800;
+}

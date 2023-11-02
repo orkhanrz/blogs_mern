@@ -1,0 +1,26 @@
+.notifier {
+    color: var(--white-clr);
+    width: max-content;
+    text-align: center;
+    padding: 16px;
+    font-size: var(--fs-200);
+    text-transform: uppercase;
+    position: absolute;
+    top: 126px;
+    right: 32px;
+    z-index: 1000;
+    transform: translateX(300px);
+    transition: transform .5s ease;
+}
+
+.notifier.active {
+    transform: translateX(0);
+}
+
+.notifier.success {
+    background-color: green;
+}
+
+.notifier.fail {
+    background-color: #e52b50;
+}

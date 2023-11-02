@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Blog = require("../models/blog");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -8,6 +9,17 @@ module.exports = {
       const users = await User.find();
 
       res.status(200).json({ users });
+    } catch (err) {
+      next(err);
+    }
+  },
+  getUserBlogs: async (req, res, next) => {
+    const userId = req.params.id;
+
+    try {
+      const blogs = await Blog.find({ author: userId });
+
+      res.status(200).json(blogs);
     } catch (err) {
       next(err);
     }

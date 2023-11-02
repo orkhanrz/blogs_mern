@@ -8,6 +8,7 @@ import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Blogs from "./pages/blogs/Blogs";
 import AddBlog from "./pages/addBlog/AddBlog";
+import UserBlogs from './pages/userBlogs/UserBlogs';
 import Contact from "./pages/contact/Contact";
 import Blog from "./pages/blog/Blog";
 import Signin from "./pages/signin/Signin";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/blogs" element={<Blogs />} />
+            <Route path="/myblogs" element={<UserBlogs />} />
             <Route
               path="/blogs/add"
               element={

@@ -9,8 +9,6 @@ const blogMiddleware = require("../middleware/blog");
 
 router.get("/", blogController.getBlogs);
 
-router.get('/user/:userId', blogController.getUserBlogs);
-
 router.delete('/:id', userMiddleware.isAuth, blogController.deleteBlog);
 
 router.get('/:id', blogController.getBlog);

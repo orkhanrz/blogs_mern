@@ -13,6 +13,8 @@ router.post("/signout", userController.signout);
 
 router.post("/token", userController.verifyToken);
 
+router.get("/:id/blogs", userController.getUserBlogs);
+
 router.put(
   "/:userId",
   userMiddleware.isAuth,
