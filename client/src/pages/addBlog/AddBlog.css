@@ -1,10 +1,7 @@
 .addBlogPage {
-  max-width: 1400px;
+  max-width: 1140px;
   width: 100%;
   margin: 16px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .addBlogPageContainer {

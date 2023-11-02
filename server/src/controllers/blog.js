@@ -1,6 +1,18 @@
 const Blog = require("../models/blog");
 
 module.exports = {
+  getBlog: async (req, res, next) => {
+    try {
+      const blog = await Blog.findById(req.params.id)
+        .populate("comments.authorId", ["image", "fullname", "quote"])
+        .populate("author", ["image", "fullname", "quote"]);
+
+      return res.status(200).json(blog);
+    } catch (err) {
+      console.log(err);
+      next(err);
+    }
+  },
   getBlogs: async (req, res, next) => {
     const {limit, page, featured} = req.query;
     const skip = (page * limit) - limit;
@@ -31,6 +43,17 @@ module.exports = {
       next(err);
     }
   },
+  getUserBlogs: async (req, res, next) => {
+    const userId = req.params.userId;
+
+    try {
+      const blogs = await Blog.find({author: userId});
+
+      res.status(200).json(blogs);
+    } catch (err){
+      next(err);
+    };
+  },
   addBlog: async (req, res, next) => {
     const { title, subtitle, category, text, keywords, length, featured } =
       req.body;
@@ -57,15 +80,14 @@ module.exports = {
       next(err);
     }
   },
-  getBlog: async (req, res, next) => {
-    try {
-      const blog = await Blog.findById(req.params.id)
-        .populate("comments.authorId", ["image", "fullname", "quote"])
-        .populate("author", ["image", "fullname", "quote"]);
+  deleteBlog: async (req, res, next) => {
+    const blogId = req.params.id;
 
-      return res.status(200).json(blog);
+    try {
+      await Blog.deleteOne({_id: blogId});
+
+      res.status(200).json({success: true, message: 'Blog has been deleted!'});
     } catch (err) {
-      console.log(err);
       next(err);
     }
   },
@@ -143,4 +165,13 @@ module.exports = {
 
     res.status(201).json({ success: true });
   },
+  updateViews: async (req, res, next) => {
+    const ipAddress = req.header('x-forwarded-for') || req.socket.remoteAddress;
+    const startTime = new Date();
+
+    console.log('ip:', ipAddress);
+    console.log('start:', startTime);
+
+    
+  }
 };

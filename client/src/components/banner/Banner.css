@@ -46,9 +46,9 @@
     height: 30vh;
   }
   .homeBanner.loaded {
-    margin-bottom: 0;
+    margin-bottom: 64px;
   }
   .bannerText {
-    display: none;
+    font-size: var(--fs-900);
   }
 }

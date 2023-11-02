@@ -102,8 +102,6 @@ function Blog() {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     setLiked({
       state: data?.likes.users.includes(user?._id),
       count: data?.likes.count,

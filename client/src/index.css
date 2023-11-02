@@ -277,11 +277,11 @@ button {
 .authFormWrapper {
   max-width: 370px;
   width: 100%;
-  padding: 32px 64px;
+  margin: 32px auto;
+  padding: 32px;
 }
 
 .authForm {
-  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -326,6 +326,7 @@ button {
   border: none;
   border-radius: 16px;
   padding: 8px 32px;
+  margin: 8px 0;
   cursor: pointer;
   align-self: center;
 }
@@ -341,6 +342,10 @@ button {
 @media screen and (max-width: 1024px) {
   .authFormContainer {
     justify-content: center;
+  }
+
+  .authFormWrapper {
+    padding: 16px;
   }
 
   .authFormImage {

@@ -5,10 +5,10 @@ const blogsContext = createContext();
 function BlogsContextProvider({ children }) {
   const [page, setPage] = useState(1);
   const [blogs, setBlogs] = useState([]);
+  const [featured, setFeatured] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [featured, setFeatured] = useState([]);
 
   async function loadData(options) {
     let url = `/api/blogs?page=${page}&limit=9`;
@@ -23,7 +23,7 @@ function BlogsContextProvider({ children }) {
 
       return data;
     } catch (err) {
-      return err;
+      throw new Error(err);
     }
   }
 
@@ -44,16 +44,14 @@ function BlogsContextProvider({ children }) {
   }
 
   useEffect(() => {
-    setIsLoading(true);
-
     async function getData() {
       try {
         const data = await loadData({featured: true});
 
         setIsLoading(false);
+        setFeatured(data.featured);
         setBlogs(data.blogs);
         setTotalPages(Math.ceil(data.length / 9));
-        setFeatured(data.featured);
       } catch (err) {
         setError(err.message);
       }
@@ -63,8 +61,6 @@ function BlogsContextProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
-
     async function getData() {
       try {
         const data = await loadData();

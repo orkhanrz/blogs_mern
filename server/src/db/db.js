@@ -6,10 +6,10 @@ module.exports = {
     try {
       _db = await mongoose.connect(process.env.MONGODB_URI, { dbName: "blogs" });
       console.log('Connection initialized!')
+      cb();
     } catch (err) {
-      throw new Error(err.message);
+      throw new Error(err);
     }
-    cb();
   },
   getDb: () => {
     return _db;

@@ -28,6 +28,10 @@ footer {
     cursor: pointer;
 }
 
+.footerContentItem:hover {
+    color: var(--main-clr);
+}
+
 .footerContentItemLogo {
     margin-right: 8px;
     font-size: var(--fs-500);

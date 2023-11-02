@@ -8,8 +8,12 @@ import { userContext } from "../../context/UserContext";
 function Auth() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: null, password: null });
-  const { login } = useContext(userContext);
+  const { user, login } = useContext(userContext);
   const navigate = useNavigate();
+
+  if (user){
+    navigate('/');
+  };
 
   function handleSubmit(e) {
     e.preventDefault();

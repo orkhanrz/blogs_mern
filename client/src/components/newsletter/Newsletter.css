@@ -11,11 +11,12 @@
 
 .newsLetterTitle {
     font-size: var(--fs-400);
+    margin: 12px 0;
 }
 
 .newsLetterText {
     font-size: var(--fs-200);
-    line-height: var(--fs-700);
+    line-height: var(--fs-400);
     margin-bottom: 24px;
 }
 
