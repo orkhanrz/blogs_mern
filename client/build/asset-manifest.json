@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6995bef0.css",
+    "main.js": "/static/js/main.5a8cecd9.js",
+    "static/media/Montserrat-BoldItalic.ttf": "/static/media/Montserrat-BoldItalic.a169c71c1eb466896fe1.ttf",
+    "static/media/Montserrat-SemiBoldItalic.ttf": "/static/media/Montserrat-SemiBoldItalic.60907ef6dc10bb4e826a.ttf",
+    "static/media/Montserrat-Italic.ttf": "/static/media/Montserrat-Italic.f4a742d68090a0bfc33f.ttf",
+    "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf",
+    "static/media/Montserrat-SemiBold.ttf": "/static/media/Montserrat-SemiBold.93b37a465fc4ec0d0415.ttf",
+    "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.24785cc015b27a3e964b.ttf",
+    "static/media/Roboto-MediumItalic.ttf": "/static/media/Roboto-MediumItalic.82736aaa11c64709055f.ttf",
+    "static/media/Roboto-BoldItalic.ttf": "/static/media/Roboto-BoldItalic.87d61cea6fe1d235d4a8.ttf",
+    "static/media/Roboto-Italic.ttf": "/static/media/Roboto-Italic.87f3afe16a8c3c370634.ttf",
+    "static/media/Roboto-Medium.ttf": "/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
+    "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/Roboto-Bold.ttf": "/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
+    "static/media/form-bird.png": "/static/media/form-bird.600762672a41a0a7f761.png",
+    "static/media/Sacramento-Regular.ttf": "/static/media/Sacramento-Regular.5bd7d5208f7a9c18fe22.ttf",
+    "index.html": "/index.html",
+    "main.6995bef0.css.map": "/static/css/main.6995bef0.css.map",
+    "main.5a8cecd9.js.map": "/static/js/main.5a8cecd9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6995bef0.css",
+    "static/js/main.5a8cecd9.js"
+  ]
+}
