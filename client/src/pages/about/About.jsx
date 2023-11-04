@@ -12,7 +12,7 @@ function About() {
       <Header />
       <div className="aboutPage">
         <div className="aboutPageContainer">
-          <div className="aboutUsPrimary">
+          <section className="aboutUsPrimary">
             <div className="aboutUsPrimaryInfo">
               <h1 className="aboutUsName">I am Sophie</h1>
               <p className="aboutUsDescription">
@@ -25,19 +25,19 @@ function About() {
             <div className="aboutUsImage">
               <img
                 src="https://malina.artstudioworks.net/wp-content/uploads/elementor/thumbs/For_home_4-o0m2yzkllmh0cjhhclcla4dz35vyc35hudn5oqpt72.jpg"
-                alt="about image"
+                alt="about"
               />
             </div>
-          </div>
-          <div className="aboutMeSecondary">
+          </section>
+          <section className="aboutMeSecondary">
             <span>Explore</span>
             <span>Dream</span>
             <span>Discover</span>
-          </div>
-          <div className="aboutMeQuote">
+          </section>
+          <section className="aboutMeQuote">
             <FontAwesomeIcon icon={faQuoteLeft} className="aboutMeQuoteIcon" />
             <p>You only live once, but if you do it right, once is enough.</p>
-          </div>
+          </section>
         </div>
       </div>
       <Footer />

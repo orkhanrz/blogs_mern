@@ -14,9 +14,10 @@ function AddBlog({ mode }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [form, setForm] = useState({ title: "", subtitle: "", category: "", text: "", keywords: "", length: "", image: ""});
-  const [errors, setErrors] = useState({ title: "", subtitle: "", category: "", text: "", keywords: "", length: "", image: "" });
+  const [errors, setErrors] = useState({ title: "", category: "", text: "", keywords: "", length: "", image: "" });
   const [notification, setNotification] = useState(null);
   const { reloadBlogs } = useContext(blogsContext);
+  const submitBtn = useRef();
 
   function displayNotification(message, type) {
     setNotification({ message, type });
@@ -50,6 +51,7 @@ function AddBlog({ mode }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    
     const options = {
       url: mode === "add" ? "/api/blogs" : `/api/blogs/${pathname.split("/")[3]}`,
       method: mode === "add" ? "POST" : "PATCH"
@@ -65,12 +67,15 @@ function AddBlog({ mode }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          //Disable submit button
+          submitBtn.current.disabled = true;
           displayNotification(data.message, "success");
           reloadBlogs();
         } else {
           if (data.errors) {
             setErrors(data.errors);
           } else {
+
             setErrors({
               title: "",
               subtitle: "",
@@ -187,7 +192,7 @@ function AddBlog({ mode }) {
               />
               {errors.text ? <p className="formError">{errors.text}</p> : ""}
             </div>
-            <button onClick={handleSubmit}>{mode === 'add' ? 'Add blog' : 'Edit blog'}</button>
+            <button ref={submitBtn} onClick={handleSubmit}>{mode === 'add' ? 'Add blog' : 'Edit blog'}</button>
           </form>
         </div>
         {notification ? (

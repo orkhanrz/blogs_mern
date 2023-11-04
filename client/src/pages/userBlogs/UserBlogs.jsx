@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UserBlogs.css";
 import { userContext } from "../../context/UserContext";
@@ -67,7 +67,7 @@ function UserBlogs() {
               <tbody>
                 {data?.map((blog, i) => {
                   return (
-                    <tr>
+                    <tr key={blog._id}>
                       <td>{i + 1}</td>
                       <td className="tableLongText">{blog.title}</td>
                       <td className="tableLongText">{blog.subtitle}</td>

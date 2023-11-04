@@ -1,18 +1,34 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Notifier from '../../components/notifier/Notifier';
 import { userContext } from "../../context/UserContext";
 
 function Auth() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: null, password: null });
+  const [notification, setNotification] = useState(null);
   const { user, login } = useContext(userContext);
   const navigate = useNavigate();
 
-  if (user){
-    navigate('/');
+  useEffect(() => {
+    if (user){
+      navigate('/');
+    };
+  }, []);
+
+  function showNotification(message, type){
+    setNotification({message, type});
+
+    setTimeout(() => {
+      setNotification(false);
+
+      if(type === 'success'){
+        navigate(-1);
+      };
+    }, 3000);
   };
 
   function handleSubmit(e) {
@@ -26,13 +42,13 @@ function Auth() {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          showNotification(data.message, 'success');
           login(data.user);
-          navigate(-1);
         } else {
           setErrors(data.errors);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setNotification(err.message, 'fail'));
   }
 
   return (
@@ -74,6 +90,7 @@ function Auth() {
           </div>
         </div>
       </div>
+      {notification ? <Notifier message={notification.message} type={notification.type}/> : ""}
       <Footer />
     </>
   );

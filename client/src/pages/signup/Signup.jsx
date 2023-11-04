@@ -65,17 +65,17 @@ function Auth() {
               <h2 className="authFormSubtitle">Welcome to Blogs</h2>
               <div className="formControl">
               <label htmlFor="fullname">Fullname</label>
-                <input type="text" name="fullname" id="fullname" placeholder="Full Name" onChange={(e) => setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value, })) } />
+                <input type="text" name="fullname" id="fullname" onChange={(e) => setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value, })) } />
                 {errors.fullname ? ( <p className="formError">{errors.fullname}</p> ) : null}
               </div>
               <div className="formControl">
               <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" onChange={(e) => setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value, })) } />
+                <input type="email" name="email" id="email" onChange={(e) => setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value, })) } />
                 {errors.email ? ( <p className="formError">{errors.email}</p> ) : null}
               </div>
               <div className="formControl">
               <label htmlFor="password">Password</label>
-                <input type="password" id='password' name="password" placeholder="Password" onChange={(e) => setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value, })) } />
+                <input type="password" id='password' name="password" onChange={(e) => setForm((prevState) => ({ ...prevState, [e.target.name]: e.target.value, })) } />
                 {errors.password ? ( <p className="formError">{errors.password}</p> ) : null}
               </div>
               <div className="formControl">

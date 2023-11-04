@@ -44,22 +44,25 @@ module.exports = {
     }
   },
   addBlog: async (req, res, next) => {
-    const { title, subtitle, category, text, keywords, length, featured } =
-      req.body;
+    const { title, subtitle, category, text, keywords, length, featured } = req.body;
     const author = req.session.user._id;
-    const image = req.file ? "/uploads/" + req.file.filename : '';
 
-    const newBlog = new Blog({
+    const blog = {
       title,
       subtitle,
       category,
-      image,
       text,
       keywords,
       length,
       author,
       featured,
-    });
+    };
+
+    if (req.file){
+      blog.image = "/uploads/" + req.file.filename;
+    }
+
+    const newBlog = new Blog(blog);
 
     try {
       await newBlog.save();

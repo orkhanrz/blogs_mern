@@ -2,16 +2,12 @@ const path = require('path');
 
 module.exports = {
   validate: (req, res, next) => {
-    const { title, subtitle, category, text, keywords, length } = req.body;
+    const { title, category, text, keywords, length } = req.body;
     const image = req.file;
     const errors = {};
 
     if (!title) {
       errors.title = "Title cannot be empty";
-    }
-
-    if (!subtitle) {
-      errors.subtitle = "Subtitle cannot be empty!";
     }
 
     if (!category) {

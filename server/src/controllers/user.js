@@ -55,6 +55,7 @@ module.exports = {
           image: newUser.image,
           quote: newUser.quote,
         },
+        message: 'You have successfully signed up!'
       });
     } catch (err) {
       next(err);
@@ -100,6 +101,7 @@ module.exports = {
       res.status(200).json({
         success: true,
         user: signedInUser,
+        message: 'You have successfully signed in!'
       });
     } catch (err) {
       next(err);
@@ -132,6 +134,7 @@ module.exports = {
       res.status(200).json({
         success: true,
         user: { fullname: user.fullname, quote: user.quote, image: user.image },
+        message: 'Profile updated!'
       });
     } catch (error) {
       next(error);

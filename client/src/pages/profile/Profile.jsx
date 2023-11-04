@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Notifier from "../../components/notifier/Notifier";
 import { userContext } from "../../context/UserContext";
 
 function Profile() {
@@ -14,9 +15,24 @@ function Profile() {
     quote: user.quote,
     image: "",
   });
+  const [notification, setNotification] = useState(null);
+  const submitBtn = useRef();
+
+  function showNotification(message, type) {
+    setNotification({ message, type });
+
+    setTimeout(() => {
+      setNotification(false);
+
+      if (type === "success") {
+        navigate("/");
+      }
+    }, 3000);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("fullname", form.fullname);
     formData.append("quote", form.quote);
@@ -26,10 +42,14 @@ function Profile() {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          submitBtn.current.disabled = true;
           edit(data.user);
-          navigate("/");
+          showNotification(data.message, "success");
+        } else {
+          showNotification(data.message, "fail");
         }
-      });
+      })
+      .catch((err) => showNotification(err.message, "fail"));
   }
 
   return (
@@ -84,9 +104,14 @@ function Profile() {
                 }}
               />
             </div>
-            <button>Update</button>
+            <button ref={submitBtn}>Update</button>
           </form>
         </div>
+        {notification ? (
+          <Notifier message={notification.message} type={notification.type} />
+        ) : (
+          ""
+        )}
       </div>
       <Footer />
     </>
