@@ -1,32 +1,49 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./UserBlogs.css";
 import { userContext } from "../../context/UserContext";
+import { blogsContext } from "../../context/BlogsContext";
 import useFetch from "../../hooks/useFetch";
 
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Aside from "../../components/aside/Aside";
 import Loader from "../../components/loader/Loader";
-import Notifier from '../../components/notifier/Notifier';
+import Notifier from "../../components/notifier/Notifier";
 import Error from "../../pages/error/Error";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function UserBlogs() {
+  const navigate = useNavigate();
   const { user } = useContext(userContext);
-  const { data, isLoading, error } = useFetch(`/api/users/${user._id}/blogs`);
+  const { reloadBlogs } = useContext(blogsContext);
+  const [notification, setNotification] = useState(null);
+  const { data, isLoading, error, refetch } = useFetch(
+    `/api/users/${user._id}/blogs`
+  );
 
-  function deleteBlogHandler(id){
-    fetch(`/blogs/${id}`, {method: 'DELETE'})
-        .then(res => res.json())
-        .then(data => {
-            
-        })
-        .catch(err => {
-            console.log(err);
-        })
-  };
+  function displayNotification(message, type) {
+    setNotification({ message, type });
+
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000);
+  }
+
+  function deleteBlogHandler(id) {
+    fetch(`/api/blogs/${id}`, { method: "DELETE" })
+      .then((res) => res.json())
+      .then((data) => {
+        displayNotification(data.message, data.success ? "success" : "fail");
+        reloadBlogs();
+        refetch();
+      })
+      .catch((err) => {
+        displayNotification(err.message, "fail");
+      });
+  }
 
   return !error ? (
     <>
@@ -48,7 +65,7 @@ function UserBlogs() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((blog, i) => {
+                {data?.map((blog, i) => {
                   return (
                     <tr>
                       <td>{i + 1}</td>
@@ -58,12 +75,18 @@ function UserBlogs() {
                       <td>{blog.likes.count}</td>
                       <td>{blog.views}</td>
                       <td>
-                        <span className="tableActionBtn editBlogBtn" >
+                        <span
+                          className="tableActionBtn editBlogBtn"
+                          onClick={() => navigate(`/blogs/edit/${blog._id}`)}
+                        >
                           <FontAwesomeIcon icon={faPencil} />
                         </span>
                       </td>
                       <td>
-                        <span className="tableActionBtn deleteBlogBtn" onClick={() => deleteBlogHandler(blog._id)}>
+                        <span
+                          className="tableActionBtn deleteBlogBtn"
+                          onClick={() => deleteBlogHandler(blog._id)}
+                        >
                           <FontAwesomeIcon icon={faTrashCan} />
                         </span>
                       </td>
@@ -77,6 +100,11 @@ function UserBlogs() {
           )}
           <Aside />
         </div>
+        {notification ? (
+          <Notifier message={notification.message} type={notification.type} />
+        ) : (
+          ""
+        )}
       </div>
       <Footer />
     </>

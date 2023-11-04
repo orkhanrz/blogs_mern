@@ -1,12 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import './Notifier.css';
 
-function Notifier() {
-  return (
-    <div className='notifier'>
-        <p className='notifierMsg'>something went wrong!</p>    
-    </div>
-  )
-}
+const Notifier = ({ message, type }) => {
+  const [show, setShow] = useState(false);
 
-export default Notifier
+  useEffect(() => {
+    const showTimer = setTimeout(() => {
+      setShow(true);
+    }, 250);
+
+    const hideTimer = setTimeout(() => {
+      setShow(false);
+    }, 2000);
+
+    return () => {clearTimeout(hideTimer); clearTimeout(showTimer)};
+  }, []);
+
+  return <div className={`notifier ${type === 'success' ? 'success' : 'fail'} ${show ? 'active' : 'hide'}`}>
+    <p className="notifierMsg">{message}</p>
+  </div>
+};
+
+export default Notifier;

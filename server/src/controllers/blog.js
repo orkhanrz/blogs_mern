@@ -47,7 +47,7 @@ module.exports = {
     const { title, subtitle, category, text, keywords, length, featured } =
       req.body;
     const author = req.session.user._id;
-    const image = "/uploads/" + req.file.filename;
+    const image = req.file ? "/uploads/" + req.file.filename : '';
 
     const newBlog = new Blog({
       title,
@@ -64,15 +64,35 @@ module.exports = {
     try {
       await newBlog.save();
 
-      res.status(201).json({ success: true, blog: newBlog });
+      res.status(201).json({ success: true, message: 'Blog has been created!', blog: newBlog });
+    } catch (err) {
+      next(err);
+    }
+  },
+  editBlog: async (req, res, next) => {
+    const blogId = req.params.id;
+    const { title, subtitle, category, text, keywords, length } = req.body;
+
+    try {
+      const blog = await Blog.findById(blogId);
+
+      blog.title = title;
+      blog.subtitle = subtitle;
+      blog.category = category;
+      blog.text = text;
+      blog.keywords = keywords;
+      blog.length = length;
+      blog.image = req.file ? '/uploads/' + req.file.filename : blog.image;
+
+      await blog.save();
+
+      res.status(201).json({ success: true, message: 'Blog has been updated!', blog });
     } catch (err) {
       next(err);
     }
   },
   deleteBlog: async (req, res, next) => {
     const blogId = req.params.id;
-
-    return res.status(500).json({success: false, message: 'You cannot delete blog!'});
 
     try {
       await Blog.deleteOne({_id: blogId});

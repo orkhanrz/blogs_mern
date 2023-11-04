@@ -130,7 +130,7 @@ function Blog() {
                   </div>
                   <div className="singleBlogPostMain">
                     <h2 className="singleBlogPostSubtitle">{data.subtitle}</h2>
-                    <p className="singleBlogPostText">{parse(data.text)}</p>
+                    <div className="singleBlogPostText">{parse(data.text)}</div>
                   </div>
                 </div>
                 <div className="singleBlogPostKeywords">

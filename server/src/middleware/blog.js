@@ -30,9 +30,9 @@ module.exports = {
       errors.length = "Length cannot be empty!";
     }
 
-    if (!image) {
-      errors.image = "Please upload a file!";
-    }
+    // if (!image) {
+    //   errors.image = "Please upload a file!";
+    // }
 
     if (image) {
       const ext = path.extname(image.filename);
@@ -41,7 +41,8 @@ module.exports = {
         ext !== ".png" &&
         ext !== ".jpg" &&
         ext !== ".gif" &&
-        ext !== ".jpeg"
+        ext !== ".jpeg" &&
+        ext !== '.webp'
       ) {
         errors.image = "Please provide a valid image!";
       }

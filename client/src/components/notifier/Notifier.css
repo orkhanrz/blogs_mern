@@ -1,20 +1,27 @@
 .notifier {
-    color: var(--white-clr);
-    width: max-content;
-    text-align: center;
-    padding: 16px;
-    font-size: var(--fs-200);
-    text-transform: uppercase;
     position: absolute;
-    top: 126px;
-    right: 32px;
-    z-index: 1000;
-    transform: translateX(300px);
-    transition: transform .5s ease;
+    top: 116px;
+    right: -300px;
+    color: white;
+    display: grid;
+    place-items: center;
+    min-width: 200px;
+    height: 50px;
+    padding: 8px;
+    z-index: 10000;
+    transition: right 0.25s ease;
+}
+
+.notifierMsg {
+    font-size: var(--fs-200);
 }
 
 .notifier.active {
-    transform: translateX(0);
+    right: 32px;
+}
+
+.notifier.hide {
+    right: -300px;
 }
 
 .notifier.success {
@@ -22,5 +29,5 @@
 }
 
 .notifier.fail {
-    background-color: #e52b50;
+    background-color: red;
 }
