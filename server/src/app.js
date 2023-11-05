@@ -27,7 +27,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "..", "..", "client", "build")));
 app.use(express.json());
-app.use(cors({ origin: ["http://localhost:3000"], methods: ["GET", "POST", "DELETE", "PUT"], credentials: true }));
+app.use(cors());
 app.use(session({ secret: process.env.MONGODB_SESSION_SECRET, cookie: { maxAge: 15 * 60 * 1000 }, store: store, resave: false, saveUninitialized: false}));
 
 //Routes
