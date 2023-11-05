@@ -1,7 +1,7 @@
 .notifier {
     position: absolute;
     top: 116px;
-    right: -300px;
+    right: -400px;
     color: white;
     display: grid;
     place-items: center;
@@ -21,7 +21,7 @@
 }
 
 .notifier.hide {
-    right: -300px;
+    right: -400px;
 }
 
 .notifier.success {

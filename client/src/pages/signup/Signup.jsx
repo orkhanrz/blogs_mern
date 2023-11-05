@@ -22,7 +22,7 @@ function Auth() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/api/users/signup", {
+    fetch("/users/signup", {
       method: "POST",
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },

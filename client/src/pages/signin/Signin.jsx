@@ -23,7 +23,7 @@ function Auth() {
     setNotification({message, type});
 
     setTimeout(() => {
-      setNotification(false);
+      setNotification(null);
 
       if(type === 'success'){
         navigate(-1);
@@ -34,7 +34,7 @@ function Auth() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/api/users/signin", {
+    fetch("/users/signin", {
       method: "POST",
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },
@@ -48,7 +48,7 @@ function Auth() {
           setErrors(data.errors);
         }
       })
-      .catch((err) => setNotification(err.message, 'fail'));
+      .catch((err) => showNotification(err.message, 'fail'));
   }
 
   return (

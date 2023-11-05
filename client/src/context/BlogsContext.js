@@ -11,10 +11,10 @@ function BlogsContextProvider({ children }) {
   const [error, setError] = useState(null);
 
   async function loadData(options) {
-    let url = `/api/blogs?page=${page}&limit=9`;
+    let url = `/blogs?page=${page}&limit=9`;
     
     if (options?.featured){
-      url = `/api/blogs?page=${page}&limit=9&featured=true`;
+      url = `/blogs?page=${page}&limit=9&featured=true`;
     }
 
     try {

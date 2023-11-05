@@ -53,7 +53,7 @@ function AddBlog({ mode }) {
     e.preventDefault();
     
     const options = {
-      url: mode === "add" ? "/api/blogs" : `/api/blogs/${pathname.split("/")[3]}`,
+      url: mode === "add" ? "/blogs" : `/blogs/${pathname.split("/")[3]}`,
       method: mode === "add" ? "POST" : "PATCH"
     }
 

@@ -123,7 +123,7 @@ module.exports = {
 
     try {
       const user = await User.findById(userId);
-      const image = req.file ? "/uploads/" + req.file.filename : user.image;
+      const image = req.file ? "/api/uploads/" + req.file.filename : user.image;
 
       user.fullname = fullname;
       user.quote = quote;

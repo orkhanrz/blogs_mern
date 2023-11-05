@@ -11,7 +11,7 @@ function UserContextProvider({ children }) {
   };
 
   const logout = () => {
-    fetch("/api/users/signout", { method: "POST" })
+    fetch("/users/signout", { method: "POST" })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
