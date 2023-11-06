@@ -9,7 +9,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const store = new MongoDBStore(
   {
     uri: process.env.MONGODB_URI,
-    databaseName: "blogs",
+    databaseName: process.env.MONGODB_NAME,
     collection: "userSessions",
   },
   function (error) {
