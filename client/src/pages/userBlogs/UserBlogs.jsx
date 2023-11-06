@@ -51,50 +51,54 @@ function UserBlogs() {
       <div className="userBlogsPage">
         <div className="userBlogsContainer">
           {!isLoading ? (
-            <table className="userBlogsTable">
-              <thead>
-                <tr>
-                  <th>Order</th>
-                  <th>Title</th>
-                  <th>Subtitle</th>
-                  <th>Category</th>
-                  <th>Likes</th>
-                  <th>Views</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data?.map((blog, i) => {
-                  return (
-                    <tr key={blog._id}>
-                      <td>{i + 1}</td>
-                      <td className="tableLongText">{blog.title}</td>
-                      <td className="tableLongText">{blog.subtitle}</td>
-                      <td>{blog.category}</td>
-                      <td>{blog.likes.count}</td>
-                      <td>{blog.views}</td>
-                      <td>
-                        <span
-                          className="tableActionBtn editBlogBtn"
-                          onClick={() => navigate(`/blogs/edit/${blog._id}`)}
-                        >
-                          <FontAwesomeIcon icon={faPencil} />
-                        </span>
-                      </td>
-                      <td>
-                        <span
-                          className="tableActionBtn deleteBlogBtn"
-                          onClick={() => deleteBlogHandler(blog._id)}
-                        >
-                          <FontAwesomeIcon icon={faTrashCan} />
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="userBlogsTableContainer">
+              <table className="userBlogsTable">
+                <thead>
+                  <tr>
+                    <th className="orderCol">Order</th>
+                    <th>Title</th>
+                    <th className="mobileTableCol">Subtitle</th>
+                    <th>Category</th>
+                    <th className="mobileTableCol">Likes</th>
+                    <th className="mobileTableCol">Views</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody className="tableBody">
+                  {data?.map((blog, i) => {
+                    return (
+                      <tr key={blog._id}>
+                        <td className="orderCol">{i + 1}</td>
+                        <td className="tableLongText">{blog.title}</td>
+                        <td className="tableLongText mobileTableCol">
+                          {blog.subtitle}
+                        </td>
+                        <td>{blog.category}</td>
+                        <td className="mobileTableCol">{blog.likes.count}</td>
+                        <td className="mobileTableCol">{blog.views}</td>
+                        <td>
+                          <span
+                            className="tableActionBtn editBlogBtn"
+                            onClick={() => navigate(`/blogs/edit/${blog._id}`)}
+                          >
+                            <FontAwesomeIcon icon={faPencil} />
+                          </span>
+                        </td>
+                        <td>
+                          <span
+                            className="tableActionBtn deleteBlogBtn"
+                            onClick={() => deleteBlogHandler(blog._id)}
+                          >
+                            <FontAwesomeIcon icon={faTrashCan} />
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <Loader />
           )}

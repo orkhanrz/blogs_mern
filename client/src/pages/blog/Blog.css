@@ -48,7 +48,6 @@
 }
 
 .singleBlogPostImage > img {
-  width: auto;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -65,6 +64,17 @@
 .singleBlogPostText {
   font-size: var(--fs-300);
   line-height: 28px;
+}
+.singleBlogPostText img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.singleBlogPostText a {
+  color: var(--main-clr)
+}
+.singleBlogPostText li{
+  list-style: unset;
 }
 .singleBlogPostKeywords {
   display: flex;
@@ -143,6 +153,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .singleBlogPostTitle {
+    font-size: var(--fs-700);
+  }
+
   .singleBlogPageContent {
     flex-direction: column;
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../header/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +12,6 @@ import { faUser, faBurger } from "@fortawesome/free-solid-svg-icons";
 import { userContext } from "../../context/UserContext";
 
 function Header() {
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const [userControls, setUserControls] = useState(false);
   const [mobileHeader, setMobileHeader] = useState(false);
@@ -29,8 +28,7 @@ function Header() {
         .then((data) => {
           if (!data.success) {
             logout();
-            navigate("/signin");
-          }
+          };
         });
     }
   }, []);

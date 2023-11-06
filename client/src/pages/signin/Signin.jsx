@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Header from "../../components/header/Header";
@@ -12,6 +12,7 @@ function Auth() {
   const [notification, setNotification] = useState(null);
   const { user, login } = useContext(userContext);
   const navigate = useNavigate();
+  const submitBtn = useRef();
 
   useEffect(() => {
     if (user){
@@ -32,6 +33,7 @@ function Auth() {
   };
 
   function handleSubmit(e) {
+    submitBtn.current.disabled = true;
     e.preventDefault();
 
     fetch("/users/signin", {
@@ -45,6 +47,7 @@ function Auth() {
           showNotification(data.message, 'success');
           login(data.user);
         } else {
+          submitBtn.current.disabled = false;
           setErrors(data.errors);
         }
       })
@@ -84,7 +87,7 @@ function Auth() {
                 <div className="formControl">
                   <p className="account">Don't have an account? Please <Link to="/signup">sign up</Link>!</p>
                 </div>
-                <button>Sign in</button>
+                <button ref={submitBtn}>Sign in</button>
               </form>
             </div>
           </div>

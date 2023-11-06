@@ -19,6 +19,9 @@ const store = new MongoDBStore(
   }
 );
 
+const BACKEND_PORT = process.env.BACKEND_PORT || 8000;
+const FRONTEND_HOST = process.env.FRONTEND_HOST || '127.0.0.1';
+
 const blogRoutes = require("./routes/blog");
 const userRoutes = require("./routes/user");
 
@@ -27,7 +30,7 @@ app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/public", express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "..", "..", "client", "build")));
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin: FRONTEND_HOST}));
 app.use(session({ secret: process.env.MONGODB_SESSION_SECRET, cookie: { maxAge: 15 * 60 * 1000 }, store: store, resave: false, saveUninitialized: false}));
 
 //Routes
@@ -45,7 +48,7 @@ app.use((err, req, res, next) => {
 });
 
 db.init(() => { 
-  app.listen(8000, () => {
-    console.log("App runs on port 8000.");
+  app.listen(BACKEND_PORT, () => {
+    console.log(`App runs on port: ${BACKEND_PORT}.`);
   })
 });

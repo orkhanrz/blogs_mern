@@ -35,7 +35,7 @@ function AddBlog({ mode }) {
     if (mode === "edit") {
       const blogId = pathname.split("/")[3];
 
-      fetch("/api/blogs/" + blogId)
+      fetch("/blogs/" + blogId)
         .then((res) => res.json())
         .then((data) => {
           setForm({ title: data.title, subtitle: data.subtitle, category: data.category, text: data.text, keywords: data.keywords, length: data.length, image: data.image });
@@ -51,6 +51,8 @@ function AddBlog({ mode }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    //Disable submit button
+    submitBtn.current.disabled = true;
     
     const options = {
       url: mode === "add" ? "/blogs" : `/blogs/${pathname.split("/")[3]}`,
@@ -67,11 +69,10 @@ function AddBlog({ mode }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          //Disable submit button
-          submitBtn.current.disabled = true;
           displayNotification(data.message, "success");
           reloadBlogs();
         } else {
+          submitBtn.current.disabled = false;
           if (data.errors) {
             setErrors(data.errors);
           } else {

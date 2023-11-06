@@ -31,7 +31,7 @@ function Home() {
           {!isLoading ? (
             <div className="homeBlogsContainer">
               <div className="homeBlogs">
-                {blogs.map((blog) => {
+                {blogs?.map((blog) => {
                   return <Blog item={blog} key={blog._id} />;
                 })}
               </div>

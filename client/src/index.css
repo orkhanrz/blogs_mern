@@ -327,7 +327,7 @@ button {
 }
 
 .authForm button {
-  background-color: var(--gray-clr);
+  background-color: var(--black-clr);
   color: var(--white-clr);
   border: none;
   border-radius: 16px;

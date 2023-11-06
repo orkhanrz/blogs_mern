@@ -29,7 +29,7 @@ function Blog() {
   const { pathname } = useLocation();
   const { user } = useContext(userContext);
   const { reloadBlogs } = useContext(blogsContext);
-  const { data, isLoading, error } = useFetch("/api" + pathname);
+  const { data, isLoading, error } = useFetch(pathname);
   const [form, setForm] = useState({ message: "" });
   const [formError, setFormError] = useState({ message: null });
   const [liked, setLiked] = useState({ state: false, count: 0 });

@@ -59,7 +59,7 @@ module.exports = {
     };
 
     if (req.file){
-      blog.image = "/api/uploads/" + req.file.filename;
+      blog.image = "/uploads/" + req.file.filename;
     }
 
     const newBlog = new Blog(blog);
@@ -85,7 +85,7 @@ module.exports = {
       blog.text = text;
       blog.keywords = keywords;
       blog.length = length;
-      blog.image = req.file ? '/api/uploads/' + req.file.filename : blog.image;
+      blog.image = req.file ? '/uploads/' + req.file.filename : blog.image;
 
       await blog.save();
 

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
@@ -14,13 +14,17 @@ function Auth() {
     fullname: null,
   });
   const { login, user } = useContext(userContext);
+  const submitBtn = useRef();
 
-  if (user){
-    navigate('/');
-  };
+  useEffect(() => {
+    if (user){
+      navigate('/');
+    };
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
+    submitBtn.current.disabled = true;
 
     fetch("/users/signup", {
       method: "POST",
@@ -33,6 +37,7 @@ function Auth() {
         if (!data.success) {
           return setErrors(data.errors);
         } else {
+          submitBtn.current.disabled = false;
           setErrors({ email: null, password: null, fullname: null });
           login(data.user);
           navigate("/signin");
@@ -81,7 +86,7 @@ function Auth() {
               <div className="formControl">
                 <p className="account">Have an account? Please <Link to="/signin">sign in</Link>!</p>
               </div>
-              <button>Sign up</button>
+              <button ref={submitBtn}>Sign up</button>
             </form>
             </div>
           </div>
