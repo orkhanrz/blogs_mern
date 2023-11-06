@@ -34,7 +34,7 @@ app.use(session({ secret: process.env.MONGODB_SESSION_SECRET, cookie: { maxAge: 
 app.use("/api/users", userRoutes);
 app.use("/api/blogs", blogRoutes);
 
-app.get("*", (req, res) => {res.sendFile(path.join(__dirname, "..", "..", "client", "build", "index.html"))});
+// app.get("*", (req, res) => {res.sendFile(path.join(__dirname, "..", "..", "client", "build", "index.html"))});
 
 app.use((err, req, res, next) => {
   const status = err.status || 500;
