@@ -38,7 +38,7 @@ function Profile() {
     formData.append("quote", form.quote);
     formData.append("image", form.image);
 
-    fetch(`/users/${user._id}`, { method: "PUT", body: formData })
+    fetch(`/api/users/${user._id}`, { method: "PUT", body: formData })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

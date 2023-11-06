@@ -28,7 +28,7 @@ function Blog({ item }) {
       return;
     }
 
-    fetch(`/blogs/${item._id}/likes/${user._id}`, {
+    fetch(`/api/blogs/${item._id}/likes/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

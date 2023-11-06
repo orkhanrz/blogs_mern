@@ -22,8 +22,6 @@ function Home() {
     featured,
   } = useContext(blogsContext);
 
-  console.log(error);
-
   return !error ? (
     <>
       <Header />

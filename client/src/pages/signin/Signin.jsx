@@ -36,7 +36,7 @@ function Auth() {
     submitBtn.current.disabled = true;
     e.preventDefault();
 
-    fetch("/users/signin", {
+    fetch("/api/users/signin", {
       method: "POST",
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },

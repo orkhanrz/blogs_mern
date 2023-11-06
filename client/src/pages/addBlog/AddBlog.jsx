@@ -35,7 +35,7 @@ function AddBlog({ mode }) {
     if (mode === "edit") {
       const blogId = pathname.split("/")[3];
 
-      fetch("/blogs/" + blogId)
+      fetch("/api/blogs/" + blogId)
         .then((res) => res.json())
         .then((data) => {
           setForm({ title: data.title, subtitle: data.subtitle, category: data.category, text: data.text, keywords: data.keywords, length: data.length, image: data.image });
@@ -55,7 +55,7 @@ function AddBlog({ mode }) {
     submitBtn.current.disabled = true;
     
     const options = {
-      url: mode === "add" ? "/blogs" : `/blogs/${pathname.split("/")[3]}`,
+      url: mode === "add" ? "/api/blogs" : `/api/blogs/${pathname.split("/")[3]}`,
       method: mode === "add" ? "POST" : "PATCH"
     }
 

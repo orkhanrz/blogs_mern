@@ -40,7 +40,7 @@ function Blog() {
       return navigate("/signin");
     }
 
-    fetch(`/blogs/${data._id}/likes/${user._id}`, {
+    fetch(`/api/blogs/${data._id}/likes/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -59,7 +59,7 @@ function Blog() {
   };
 
   const deleteComment = (commentId) => {
-    fetch(`/blogs/${data._id}/comments/${commentId}`, {
+    fetch(`/api/blogs/${data._id}/comments/${commentId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -81,7 +81,7 @@ function Blog() {
       return navigate("/signin");
     }
 
-    fetch(`/blogs/${data._id}/comments`, {
+    fetch(`/api/blogs/${data._id}/comments`, {
       method: "POST",
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },

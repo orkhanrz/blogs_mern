@@ -21,7 +21,7 @@ function UserBlogs() {
   const { reloadBlogs } = useContext(blogsContext);
   const [notification, setNotification] = useState(null);
   const { data, isLoading, error, refetch } = useFetch(
-    `/users/${user._id}/blogs`
+    `/api/users/${user._id}/blogs`
   );
 
   function displayNotification(message, type) {
@@ -33,7 +33,7 @@ function UserBlogs() {
   }
 
   function deleteBlogHandler(id) {
-    fetch(`/blogs/${id}`, { method: "DELETE" })
+    fetch(`/api/blogs/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         displayNotification(data.message, data.success ? "success" : "fail");

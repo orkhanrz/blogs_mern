@@ -23,7 +23,7 @@ function Header() {
 
   useEffect(() => {
     if (user) {
-      fetch("/users/token", { method: "POST" })
+      fetch("/api/users/token", { method: "POST" })
         .then((res) => res.json())
         .then((data) => {
           if (!data.success) {
