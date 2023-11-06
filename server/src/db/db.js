@@ -4,7 +4,7 @@ let _db = null;
 module.exports = {
   init: async (cb) => {
     try {
-      _db = await mongoose.connect(process.env.MONGODB_URI, { dbName: "blogs" });
+      _db = await mongoose.connect(process.env.MONGODB_URI, { dbName: process.env.MONGODB_NAME });
       console.log('Connection initialized!')
       cb();
     } catch (err) {
