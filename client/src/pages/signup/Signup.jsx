@@ -2,6 +2,7 @@ import { useState, useContext, useEffect, useRef } from "react";
 
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Notifier from "../../components/notifier/Notifier";
 import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../../context/UserContext";
 
@@ -14,7 +15,20 @@ function Auth() {
     fullname: null,
   });
   const { login, user } = useContext(userContext);
+  const [notification, setNotification] = useState(null);
   const submitBtn = useRef();
+
+  function showNotification(message, type){
+    setNotification({message, type});
+
+    setTimeout(() => {
+      setNotification(null);
+
+      if(type === 'success'){
+        navigate(-1);
+      };
+    }, 3000);
+  }
 
   useEffect(() => {
     if (user){
@@ -33,17 +47,19 @@ function Auth() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (!data.success) {
+          submitBtn.current.disabled = false;
           return setErrors(data.errors);
         } else {
-          submitBtn.current.disabled = false;
           setErrors({ email: null, password: null, fullname: null });
           login(data.user);
           navigate("/signin");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        submitBtn.current.disabled = false;
+        showNotification(err.message, 'fail');
+      });
   }
 
   return (
@@ -92,6 +108,7 @@ function Auth() {
           </div>
         </div>
       </div>
+      {notification ? <Notifier type={notification.type} message={notification.message}/> : ''}
       <Footer />
     </>
   );

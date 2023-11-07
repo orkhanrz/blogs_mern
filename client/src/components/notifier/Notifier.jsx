@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./Notifier.css";
 
 const Notifier = ({ message, type }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
+    const showTimer = setTimeout(() => {
+      setShow(true);
+    }, 250);
     const hideTimer = setTimeout(() => {
       setShow(false);
     }, 2000);
 
     return () => {
+      clearTimeout(showTimer);
       clearTimeout(hideTimer);
     };
   }, []);

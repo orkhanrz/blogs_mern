@@ -51,7 +51,10 @@ function Auth() {
           setErrors(data.errors);
         }
       })
-      .catch((err) => showNotification(err.message, 'fail'));
+      .catch((err) => {
+        submitBtn.current.disabled = false;
+        showNotification(err.message, 'fail')
+      });
   }
 
   return (

@@ -76,7 +76,6 @@ function AddBlog({ mode }) {
           if (data.errors) {
             setErrors(data.errors);
           } else {
-
             setErrors({
               title: "",
               subtitle: "",

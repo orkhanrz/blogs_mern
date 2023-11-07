@@ -22,6 +22,6 @@ router.put(
   userController.editUser
 );
 
-router.get("/", userController.getUsers);
+router.get("/", userMiddleware.isAuth, userController.getUsers);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ebd45b73.css",
-    "main.js": "/static/js/main.edc6e074.js",
+    "main.css": "/static/css/main.e73e0bcc.css",
+    "main.js": "/static/js/main.5c76e9c3.js",
     "static/media/Montserrat-BoldItalic.ttf": "/static/media/Montserrat-BoldItalic.a169c71c1eb466896fe1.ttf",
     "static/media/Montserrat-SemiBoldItalic.ttf": "/static/media/Montserrat-SemiBoldItalic.60907ef6dc10bb4e826a.ttf",
     "static/media/Montserrat-Italic.ttf": "/static/media/Montserrat-Italic.f4a742d68090a0bfc33f.ttf",
@@ -17,11 +17,11 @@
     "static/media/form-bird.png": "/static/media/form-bird.600762672a41a0a7f761.png",
     "static/media/Sacramento-Regular.ttf": "/static/media/Sacramento-Regular.5bd7d5208f7a9c18fe22.ttf",
     "index.html": "/index.html",
-    "main.ebd45b73.css.map": "/static/css/main.ebd45b73.css.map",
-    "main.edc6e074.js.map": "/static/js/main.edc6e074.js.map"
+    "main.e73e0bcc.css.map": "/static/css/main.e73e0bcc.css.map",
+    "main.5c76e9c3.js.map": "/static/js/main.5c76e9c3.js.map"
   },
   "entrypoints": [
-    "static/css/main.ebd45b73.css",
-    "static/js/main.edc6e074.js"
+    "static/css/main.e73e0bcc.css",
+    "static/js/main.5c76e9c3.js"
   ]
 }
