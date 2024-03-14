@@ -41,7 +41,7 @@ function Contact() {
       <div className="contactPage">
         <div className="contactPageImage">
           <img
-            src="https://malina.artstudioworks.net/wp-content/uploads/2018/11/cassidy-kelley-140787-unsplash-1900x650.jpg"
+            src="https://images.pexels.com/photos/48770/business-time-clock-clocks-48770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt=""
           />
         </div>

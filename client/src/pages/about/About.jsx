@@ -24,7 +24,7 @@ function About() {
             </div>
             <div className="aboutUsImage">
               <img
-                src="https://malina.artstudioworks.net/wp-content/uploads/elementor/thumbs/For_home_4-o0m2yzkllmh0cjhhclcla4dz35vyc35hudn5oqpt72.jpg"
+                src="https://images.pexels.com/photos/1405761/pexels-photo-1405761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="about"
               />
             </div>
